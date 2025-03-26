@@ -1,0 +1,14 @@
+/home/rhys/ros2_ws/src/RS2/Visual/build/CMakeFiles/uninstall.dir
+/home/rhys/ros2_ws/src/RS2/Visual/build/CMakeFiles/Visual_uninstall.dir
+/home/rhys/ros2_ws/src/RS2/Visual/build/CMakeFiles/main.dir
+/home/rhys/ros2_ws/src/RS2/Visual/build/CMakeFiles/Imageoverlay.dir
+/home/rhys/ros2_ws/src/RS2/Visual/build/CMakeFiles/OpenCv.dir
+/home/rhys/ros2_ws/src/RS2/Visual/build/CMakeFiles/PCL.dir
+/home/rhys/ros2_ws/src/RS2/Visual/build/CMakeFiles/Recognition.dir
+/home/rhys/ros2_ws/src/RS2/Visual/build/CMakeFiles/test.dir
+/home/rhys/ros2_ws/src/RS2/Visual/build/CMakeFiles/edit_cache.dir
+/home/rhys/ros2_ws/src/RS2/Visual/build/CMakeFiles/rebuild_cache.dir
+/home/rhys/ros2_ws/src/RS2/Visual/build/CMakeFiles/list_install_components.dir
+/home/rhys/ros2_ws/src/RS2/Visual/build/CMakeFiles/install.dir
+/home/rhys/ros2_ws/src/RS2/Visual/build/CMakeFiles/install/local.dir
+/home/rhys/ros2_ws/src/RS2/Visual/build/CMakeFiles/install/strip.dir

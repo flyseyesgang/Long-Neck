@@ -1,0 +1,115 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-2b459689661d54fa8c1a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Visual",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "Imageoverlay::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Imageoverlay-Debug-24f2d94515e3470a88f8.json",
+					"name" : "Imageoverlay",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "OpenCv::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-OpenCv-Debug-beadeb5e93985ae40cb3.json",
+					"name" : "OpenCv",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "PCL::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-PCL-Debug-18e0ae0791c09454e80c.json",
+					"name" : "PCL",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Recognition::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Recognition-Debug-2d9f6c7e35cded7f870b.json",
+					"name" : "Recognition",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Visual_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Visual_uninstall-Debug-3f52c9a2f387ca2636df.json",
+					"name" : "Visual_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "main::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-main-Debug-b8a9dd398982f502a80d.json",
+					"name" : "main",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-Debug-36e88c00185beb4120f9.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/rhys/ros2_ws/src/RS2/Visual/build",
+		"source" : "/home/rhys/ros2_ws/src/RS2/Visual"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}
