@@ -1,0 +1,6 @@
+names:
+- lid
+nc: 1
+path: ../yolo_data
+train: images/train
+val: images/val

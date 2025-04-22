@@ -1,0 +1,142 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-d629c969393fd7fb1f16.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Visual",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "Visual_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Visual_uninstall-bd845ad3302b72d1de6c.json",
+					"name" : "Visual_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "brand_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-brand_node-b6e12a827ba9a8550ca4.json",
+					"name" : "brand_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "camera_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-camera_node-158c3bc0d1ea130c46c7.json",
+					"name" : "camera_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cartesian_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cartesian_node-9f896a3b9dc1690d96ce.json",
+					"name" : "cartesian_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "detector::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-detector-c736f6225e11bb8d533e.json",
+					"name" : "detector",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "location_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-location_node-8ff30892e2f16c3b01cf.json",
+					"name" : "location_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "main_demo::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-main_demo-dec5484d0fc476142d7f.json",
+					"name" : "main_demo",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "recognition_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-recognition_node-ed8591add4b1dc1b4165.json",
+					"name" : "recognition_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-1b0aae09c99825b00557.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "yolo_visualiser::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-yolo_visualiser-b838a1379998da8d3f48.json",
+					"name" : "yolo_visualiser",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/rhys/ros2_ws/src/RS2/Visual/build/Visual",
+		"source" : "/home/rhys/ros2_ws/src/RS2/Visual"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

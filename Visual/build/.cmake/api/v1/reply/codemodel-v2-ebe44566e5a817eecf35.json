@@ -1,0 +1,151 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-3bfcf423e52070031c0c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Visual",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "Visual_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Visual_uninstall-Debug-63e7593d99f1a9fde82f.json",
+					"name" : "Visual_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "brand_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-brand_node-Debug-3c11f6756fa97ec654b2.json",
+					"name" : "brand_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "camera_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-camera_node-Debug-6881eb627e54591712fc.json",
+					"name" : "camera_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cartesian_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cartesian_node-Debug-c5dbece37cc3fe99ee34.json",
+					"name" : "cartesian_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "detector::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-detector-Debug-faac5a7dc6db69f10ba3.json",
+					"name" : "detector",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "fusion_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-fusion_node-Debug-9236db6f7b93c2ceb90b.json",
+					"name" : "fusion_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "location_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-location_node-Debug-efd2d5e3f551fa79e521.json",
+					"name" : "location_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "main_demo::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-main_demo-Debug-eea0e47d89143b714dc4.json",
+					"name" : "main_demo",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "recognition_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-recognition_node-Debug-69107724d819ea4212a3.json",
+					"name" : "recognition_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-Debug-1b0aae09c99825b00557.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "yolo_visualiser::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-yolo_visualiser-Debug-b295f1a4ee0a372ab983.json",
+					"name" : "yolo_visualiser",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/rhys/ros2_ws/src/RS2/Visual/build",
+		"source" : "/home/rhys/ros2_ws/src/RS2/Visual"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

@@ -1,0 +1,11 @@
+{
+  "score": -32,
+  "params": {
+    "dp": 1.2,
+    "minDist": 30,
+    "param1": 156,
+    "param2": 44,
+    "minRadius": 13,
+    "maxRadius": 33
+  }
+}

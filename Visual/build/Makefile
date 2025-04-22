@@ -198,76 +198,152 @@ Visual_uninstall/fast:
 .PHONY : Visual_uninstall/fast
 
 #=============================================================================
-# Target rules for targets named main
+# Target rules for targets named camera_node
 
 # Build rule for target.
-main: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 main
-.PHONY : main
+camera_node: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 camera_node
+.PHONY : camera_node
 
 # fast build rule for target.
-main/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
-.PHONY : main/fast
+camera_node/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_node.dir/build.make CMakeFiles/camera_node.dir/build
+.PHONY : camera_node/fast
 
 #=============================================================================
-# Target rules for targets named Imageoverlay
+# Target rules for targets named yolo_visualiser
 
 # Build rule for target.
-Imageoverlay: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Imageoverlay
-.PHONY : Imageoverlay
+yolo_visualiser: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 yolo_visualiser
+.PHONY : yolo_visualiser
 
 # fast build rule for target.
-Imageoverlay/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Imageoverlay.dir/build.make CMakeFiles/Imageoverlay.dir/build
-.PHONY : Imageoverlay/fast
+yolo_visualiser/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/yolo_visualiser.dir/build.make CMakeFiles/yolo_visualiser.dir/build
+.PHONY : yolo_visualiser/fast
 
 #=============================================================================
-# Target rules for targets named OpenCv
+# Target rules for targets named detector
 
 # Build rule for target.
-OpenCv: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 OpenCv
-.PHONY : OpenCv
+detector: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 detector
+.PHONY : detector
 
 # fast build rule for target.
-OpenCv/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/OpenCv.dir/build.make CMakeFiles/OpenCv.dir/build
-.PHONY : OpenCv/fast
+detector/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/detector.dir/build.make CMakeFiles/detector.dir/build
+.PHONY : detector/fast
 
 #=============================================================================
-# Target rules for targets named PCL
+# Target rules for targets named location_node
 
 # Build rule for target.
-PCL: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 PCL
-.PHONY : PCL
+location_node: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 location_node
+.PHONY : location_node
 
 # fast build rule for target.
-PCL/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PCL.dir/build.make CMakeFiles/PCL.dir/build
-.PHONY : PCL/fast
+location_node/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/location_node.dir/build.make CMakeFiles/location_node.dir/build
+.PHONY : location_node/fast
 
 #=============================================================================
-# Target rules for targets named Recognition
+# Target rules for targets named cartesian_node
 
 # Build rule for target.
-Recognition: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Recognition
-.PHONY : Recognition
+cartesian_node: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cartesian_node
+.PHONY : cartesian_node
 
 # fast build rule for target.
-Recognition/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Recognition.dir/build.make CMakeFiles/Recognition.dir/build
-.PHONY : Recognition/fast
+cartesian_node/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cartesian_node.dir/build.make CMakeFiles/cartesian_node.dir/build
+.PHONY : cartesian_node/fast
+
+#=============================================================================
+# Target rules for targets named brand_node
+
+# Build rule for target.
+brand_node: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 brand_node
+.PHONY : brand_node
+
+# fast build rule for target.
+brand_node/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/brand_node.dir/build.make CMakeFiles/brand_node.dir/build
+.PHONY : brand_node/fast
+
+#=============================================================================
+# Target rules for targets named recognition_node
+
+# Build rule for target.
+recognition_node: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 recognition_node
+.PHONY : recognition_node
+
+# fast build rule for target.
+recognition_node/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/recognition_node.dir/build.make CMakeFiles/recognition_node.dir/build
+.PHONY : recognition_node/fast
+
+#=============================================================================
+# Target rules for targets named main_demo
+
+# Build rule for target.
+main_demo: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 main_demo
+.PHONY : main_demo
+
+# fast build rule for target.
+main_demo/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_demo.dir/build.make CMakeFiles/main_demo.dir/build
+.PHONY : main_demo/fast
+
+#=============================================================================
+# Target rules for targets named fusion_node
+
+# Build rule for target.
+fusion_node: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 fusion_node
+.PHONY : fusion_node
+
+# fast build rule for target.
+fusion_node/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fusion_node.dir/build.make CMakeFiles/fusion_node.dir/build
+.PHONY : fusion_node/fast
+
+src/Cartesian.o: src/Cartesian.cpp.o
+.PHONY : src/Cartesian.o
+
+# target to build an object file
+src/Cartesian.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cartesian_node.dir/build.make CMakeFiles/cartesian_node.dir/src/Cartesian.cpp.o
+.PHONY : src/Cartesian.cpp.o
+
+src/Cartesian.i: src/Cartesian.cpp.i
+.PHONY : src/Cartesian.i
+
+# target to preprocess a source file
+src/Cartesian.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cartesian_node.dir/build.make CMakeFiles/cartesian_node.dir/src/Cartesian.cpp.i
+.PHONY : src/Cartesian.cpp.i
+
+src/Cartesian.s: src/Cartesian.cpp.s
+.PHONY : src/Cartesian.s
+
+# target to generate assembly for a file
+src/Cartesian.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cartesian_node.dir/build.make CMakeFiles/cartesian_node.dir/src/Cartesian.cpp.s
+.PHONY : src/Cartesian.cpp.s
 
 src/Imageoverlay.o: src/Imageoverlay.cpp.o
 .PHONY : src/Imageoverlay.o
 
 # target to build an object file
 src/Imageoverlay.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Imageoverlay.dir/build.make CMakeFiles/Imageoverlay.dir/src/Imageoverlay.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/brand_node.dir/build.make CMakeFiles/brand_node.dir/src/Imageoverlay.cpp.o
 .PHONY : src/Imageoverlay.cpp.o
 
 src/Imageoverlay.i: src/Imageoverlay.cpp.i
@@ -275,7 +351,7 @@ src/Imageoverlay.i: src/Imageoverlay.cpp.i
 
 # target to preprocess a source file
 src/Imageoverlay.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Imageoverlay.dir/build.make CMakeFiles/Imageoverlay.dir/src/Imageoverlay.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/brand_node.dir/build.make CMakeFiles/brand_node.dir/src/Imageoverlay.cpp.i
 .PHONY : src/Imageoverlay.cpp.i
 
 src/Imageoverlay.s: src/Imageoverlay.cpp.s
@@ -283,63 +359,15 @@ src/Imageoverlay.s: src/Imageoverlay.cpp.s
 
 # target to generate assembly for a file
 src/Imageoverlay.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Imageoverlay.dir/build.make CMakeFiles/Imageoverlay.dir/src/Imageoverlay.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/brand_node.dir/build.make CMakeFiles/brand_node.dir/src/Imageoverlay.cpp.s
 .PHONY : src/Imageoverlay.cpp.s
-
-src/OpenCv.o: src/OpenCv.cpp.o
-.PHONY : src/OpenCv.o
-
-# target to build an object file
-src/OpenCv.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/OpenCv.dir/build.make CMakeFiles/OpenCv.dir/src/OpenCv.cpp.o
-.PHONY : src/OpenCv.cpp.o
-
-src/OpenCv.i: src/OpenCv.cpp.i
-.PHONY : src/OpenCv.i
-
-# target to preprocess a source file
-src/OpenCv.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/OpenCv.dir/build.make CMakeFiles/OpenCv.dir/src/OpenCv.cpp.i
-.PHONY : src/OpenCv.cpp.i
-
-src/OpenCv.s: src/OpenCv.cpp.s
-.PHONY : src/OpenCv.s
-
-# target to generate assembly for a file
-src/OpenCv.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/OpenCv.dir/build.make CMakeFiles/OpenCv.dir/src/OpenCv.cpp.s
-.PHONY : src/OpenCv.cpp.s
-
-src/PCL.o: src/PCL.cpp.o
-.PHONY : src/PCL.o
-
-# target to build an object file
-src/PCL.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PCL.dir/build.make CMakeFiles/PCL.dir/src/PCL.cpp.o
-.PHONY : src/PCL.cpp.o
-
-src/PCL.i: src/PCL.cpp.i
-.PHONY : src/PCL.i
-
-# target to preprocess a source file
-src/PCL.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PCL.dir/build.make CMakeFiles/PCL.dir/src/PCL.cpp.i
-.PHONY : src/PCL.cpp.i
-
-src/PCL.s: src/PCL.cpp.s
-.PHONY : src/PCL.s
-
-# target to generate assembly for a file
-src/PCL.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PCL.dir/build.make CMakeFiles/PCL.dir/src/PCL.cpp.s
-.PHONY : src/PCL.cpp.s
 
 src/Recognition.o: src/Recognition.cpp.o
 .PHONY : src/Recognition.o
 
 # target to build an object file
 src/Recognition.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Recognition.dir/build.make CMakeFiles/Recognition.dir/src/Recognition.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/recognition_node.dir/build.make CMakeFiles/recognition_node.dir/src/Recognition.cpp.o
 .PHONY : src/Recognition.cpp.o
 
 src/Recognition.i: src/Recognition.cpp.i
@@ -347,7 +375,7 @@ src/Recognition.i: src/Recognition.cpp.i
 
 # target to preprocess a source file
 src/Recognition.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Recognition.dir/build.make CMakeFiles/Recognition.dir/src/Recognition.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/recognition_node.dir/build.make CMakeFiles/recognition_node.dir/src/Recognition.cpp.i
 .PHONY : src/Recognition.cpp.i
 
 src/Recognition.s: src/Recognition.cpp.s
@@ -355,15 +383,111 @@ src/Recognition.s: src/Recognition.cpp.s
 
 # target to generate assembly for a file
 src/Recognition.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Recognition.dir/build.make CMakeFiles/Recognition.dir/src/Recognition.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/recognition_node.dir/build.make CMakeFiles/recognition_node.dir/src/Recognition.cpp.s
 .PHONY : src/Recognition.cpp.s
+
+src/camera_node.o: src/camera_node.cpp.o
+.PHONY : src/camera_node.o
+
+# target to build an object file
+src/camera_node.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_node.dir/build.make CMakeFiles/camera_node.dir/src/camera_node.cpp.o
+.PHONY : src/camera_node.cpp.o
+
+src/camera_node.i: src/camera_node.cpp.i
+.PHONY : src/camera_node.i
+
+# target to preprocess a source file
+src/camera_node.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_node.dir/build.make CMakeFiles/camera_node.dir/src/camera_node.cpp.i
+.PHONY : src/camera_node.cpp.i
+
+src/camera_node.s: src/camera_node.cpp.s
+.PHONY : src/camera_node.s
+
+# target to generate assembly for a file
+src/camera_node.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_node.dir/build.make CMakeFiles/camera_node.dir/src/camera_node.cpp.s
+.PHONY : src/camera_node.cpp.s
+
+src/detector.o: src/detector.cpp.o
+.PHONY : src/detector.o
+
+# target to build an object file
+src/detector.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/detector.dir/build.make CMakeFiles/detector.dir/src/detector.cpp.o
+.PHONY : src/detector.cpp.o
+
+src/detector.i: src/detector.cpp.i
+.PHONY : src/detector.i
+
+# target to preprocess a source file
+src/detector.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/detector.dir/build.make CMakeFiles/detector.dir/src/detector.cpp.i
+.PHONY : src/detector.cpp.i
+
+src/detector.s: src/detector.cpp.s
+.PHONY : src/detector.s
+
+# target to generate assembly for a file
+src/detector.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/detector.dir/build.make CMakeFiles/detector.dir/src/detector.cpp.s
+.PHONY : src/detector.cpp.s
+
+src/fusion.o: src/fusion.cpp.o
+.PHONY : src/fusion.o
+
+# target to build an object file
+src/fusion.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fusion_node.dir/build.make CMakeFiles/fusion_node.dir/src/fusion.cpp.o
+.PHONY : src/fusion.cpp.o
+
+src/fusion.i: src/fusion.cpp.i
+.PHONY : src/fusion.i
+
+# target to preprocess a source file
+src/fusion.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fusion_node.dir/build.make CMakeFiles/fusion_node.dir/src/fusion.cpp.i
+.PHONY : src/fusion.cpp.i
+
+src/fusion.s: src/fusion.cpp.s
+.PHONY : src/fusion.s
+
+# target to generate assembly for a file
+src/fusion.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fusion_node.dir/build.make CMakeFiles/fusion_node.dir/src/fusion.cpp.s
+.PHONY : src/fusion.cpp.s
+
+src/location.o: src/location.cpp.o
+.PHONY : src/location.o
+
+# target to build an object file
+src/location.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/location_node.dir/build.make CMakeFiles/location_node.dir/src/location.cpp.o
+.PHONY : src/location.cpp.o
+
+src/location.i: src/location.cpp.i
+.PHONY : src/location.i
+
+# target to preprocess a source file
+src/location.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/location_node.dir/build.make CMakeFiles/location_node.dir/src/location.cpp.i
+.PHONY : src/location.cpp.i
+
+src/location.s: src/location.cpp.s
+.PHONY : src/location.s
+
+# target to generate assembly for a file
+src/location.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/location_node.dir/build.make CMakeFiles/location_node.dir/src/location.cpp.s
+.PHONY : src/location.cpp.s
 
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
 # target to build an object file
 src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_demo.dir/build.make CMakeFiles/main_demo.dir/src/main.cpp.o
 .PHONY : src/main.cpp.o
 
 src/main.i: src/main.cpp.i
@@ -371,7 +495,7 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_demo.dir/build.make CMakeFiles/main_demo.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
 src/main.s: src/main.cpp.s
@@ -379,8 +503,32 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_demo.dir/build.make CMakeFiles/main_demo.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
+
+src/yolo_visualiser.o: src/yolo_visualiser.cpp.o
+.PHONY : src/yolo_visualiser.o
+
+# target to build an object file
+src/yolo_visualiser.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/yolo_visualiser.dir/build.make CMakeFiles/yolo_visualiser.dir/src/yolo_visualiser.cpp.o
+.PHONY : src/yolo_visualiser.cpp.o
+
+src/yolo_visualiser.i: src/yolo_visualiser.cpp.i
+.PHONY : src/yolo_visualiser.i
+
+# target to preprocess a source file
+src/yolo_visualiser.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/yolo_visualiser.dir/build.make CMakeFiles/yolo_visualiser.dir/src/yolo_visualiser.cpp.i
+.PHONY : src/yolo_visualiser.cpp.i
+
+src/yolo_visualiser.s: src/yolo_visualiser.cpp.s
+.PHONY : src/yolo_visualiser.s
+
+# target to generate assembly for a file
+src/yolo_visualiser.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/yolo_visualiser.dir/build.make CMakeFiles/yolo_visualiser.dir/src/yolo_visualiser.cpp.s
+.PHONY : src/yolo_visualiser.cpp.s
 
 # Help Target
 help:
@@ -397,26 +545,42 @@ help:
 	@echo "... test"
 	@echo "... Visual_uninstall"
 	@echo "... uninstall"
-	@echo "... Imageoverlay"
-	@echo "... OpenCv"
-	@echo "... PCL"
-	@echo "... Recognition"
-	@echo "... main"
+	@echo "... brand_node"
+	@echo "... camera_node"
+	@echo "... cartesian_node"
+	@echo "... detector"
+	@echo "... fusion_node"
+	@echo "... location_node"
+	@echo "... main_demo"
+	@echo "... recognition_node"
+	@echo "... yolo_visualiser"
+	@echo "... src/Cartesian.o"
+	@echo "... src/Cartesian.i"
+	@echo "... src/Cartesian.s"
 	@echo "... src/Imageoverlay.o"
 	@echo "... src/Imageoverlay.i"
 	@echo "... src/Imageoverlay.s"
-	@echo "... src/OpenCv.o"
-	@echo "... src/OpenCv.i"
-	@echo "... src/OpenCv.s"
-	@echo "... src/PCL.o"
-	@echo "... src/PCL.i"
-	@echo "... src/PCL.s"
 	@echo "... src/Recognition.o"
 	@echo "... src/Recognition.i"
 	@echo "... src/Recognition.s"
+	@echo "... src/camera_node.o"
+	@echo "... src/camera_node.i"
+	@echo "... src/camera_node.s"
+	@echo "... src/detector.o"
+	@echo "... src/detector.i"
+	@echo "... src/detector.s"
+	@echo "... src/fusion.o"
+	@echo "... src/fusion.i"
+	@echo "... src/fusion.s"
+	@echo "... src/location.o"
+	@echo "... src/location.i"
+	@echo "... src/location.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/yolo_visualiser.o"
+	@echo "... src/yolo_visualiser.i"
+	@echo "... src/yolo_visualiser.s"
 .PHONY : help
 
 
