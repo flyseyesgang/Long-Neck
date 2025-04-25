@@ -11,6 +11,7 @@ Supports test steps 1-5:
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import String, Int32
+from geometry_msgs.msg import PoseStamped
 
 
 class MemoryDecisionNode(Node):
@@ -42,6 +43,7 @@ class MemoryDecisionNode(Node):
         # Publishers for slot decisions and restock requests
         self.next_slot_pub = self.create_publisher(Int32, 'next_slot', 10)
         self.restock_pub   = self.create_publisher(String, 'restock_request', 10)
+        self.cart_goal_pub = self.create_publisher(PoseStamped, 'cartesian_goal', 10)
 
         # Subscribers for requests and scan results
         self.create_subscription(String, 'requested_drink', self.request_cb, 10)
@@ -55,7 +57,18 @@ class MemoryDecisionNode(Node):
         Pseudo-interface for UR3 movement to a Cartesian goal.
         In real integration, replace this with action client calls.
         """
-        self.get_logger().info(f'[UR3] Pseudo-moving to {coord}')
+        # self.get_logger().info(f'[UR3] Pseudo-moving to {coord}')
+        msg = PoseStamped()
+        msg.header.stamp = self.get_clock().now().to_msg()
+        msg.header.frame_id = 'base_link'    # match your MoveIt frame
+        msg.pose.position.x = coord[0]
+        msg.pose.position.y = coord[1]
+        msg.pose.position.z = coord[2]
+        # keep orientation fixed (you could parameterise this)
+        msg.pose.orientation.w = 1.0
+
+        self.cart_goal_pub.publish(msg)
+        self.get_logger().info(f'Published cartesian_goal: {coord}')
 
     def request_cb(self, msg: String):
         """
