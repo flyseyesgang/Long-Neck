@@ -1,0 +1,6 @@
+names:
+- lid
+nc: 1
+path: /home/rhys/ros2_ws/src/RS2/visual/dataset
+train: images/train
+val: images/val

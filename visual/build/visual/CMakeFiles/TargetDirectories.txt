@@ -1,0 +1,16 @@
+/home/rhys/ros2_ws/src/RS2/visual/build/visual/CMakeFiles/uninstall.dir
+/home/rhys/ros2_ws/src/RS2/visual/build/visual/CMakeFiles/visual_uninstall.dir
+/home/rhys/ros2_ws/src/RS2/visual/build/visual/CMakeFiles/camera_node.dir
+/home/rhys/ros2_ws/src/RS2/visual/build/visual/CMakeFiles/esky_detector.dir
+/home/rhys/ros2_ws/src/RS2/visual/build/visual/CMakeFiles/bottle_detector_ort.dir
+/home/rhys/ros2_ws/src/RS2/visual/build/visual/CMakeFiles/cartesian.dir
+/home/rhys/ros2_ws/src/RS2/visual/build/visual/CMakeFiles/brand_recognition.dir
+/home/rhys/ros2_ws/src/RS2/visual/build/visual/CMakeFiles/fusion_node.dir
+/home/rhys/ros2_ws/src/RS2/visual/build/visual/CMakeFiles/crop_node.dir
+/home/rhys/ros2_ws/src/RS2/visual/build/visual/CMakeFiles/test.dir
+/home/rhys/ros2_ws/src/RS2/visual/build/visual/CMakeFiles/edit_cache.dir
+/home/rhys/ros2_ws/src/RS2/visual/build/visual/CMakeFiles/rebuild_cache.dir
+/home/rhys/ros2_ws/src/RS2/visual/build/visual/CMakeFiles/list_install_components.dir
+/home/rhys/ros2_ws/src/RS2/visual/build/visual/CMakeFiles/install.dir
+/home/rhys/ros2_ws/src/RS2/visual/build/visual/CMakeFiles/install/local.dir
+/home/rhys/ros2_ws/src/RS2/visual/build/visual/CMakeFiles/install/strip.dir

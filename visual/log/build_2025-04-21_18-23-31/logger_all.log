@@ -1,0 +1,106 @@
+[0.082s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--packages-select', 'Visual']
+[0.082s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=16, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=['Visual'], packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x77269c19c2b0>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x77269c1248e0>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x77269c1248e0>>, mixin_verb=('build',))
+[0.109s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.109s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.109s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.109s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.109s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.109s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.109s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/rhys/ros2_ws/src/RS2/Visual'
+[0.109s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.130s] DEBUG:colcon.colcon_core.package_identification:Package '.' with type 'ros.ament_cmake' and name 'Visual'
+[0.130s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.130s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.130s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.130s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.130s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.143s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.143s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.145s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 15 installed packages in /home/rhys/ros2_ws/install
+[0.148s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 457 installed packages in /opt/ros/humble
+[0.149s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.202s] Level 5:colcon.colcon_core.verb:set package 'Visual' build argument 'cmake_args' from command line to 'None'
+[0.202s] Level 5:colcon.colcon_core.verb:set package 'Visual' build argument 'cmake_target' from command line to 'None'
+[0.202s] Level 5:colcon.colcon_core.verb:set package 'Visual' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.202s] Level 5:colcon.colcon_core.verb:set package 'Visual' build argument 'cmake_clean_cache' from command line to 'False'
+[0.202s] Level 5:colcon.colcon_core.verb:set package 'Visual' build argument 'cmake_clean_first' from command line to 'False'
+[0.202s] Level 5:colcon.colcon_core.verb:set package 'Visual' build argument 'cmake_force_configure' from command line to 'False'
+[0.202s] Level 5:colcon.colcon_core.verb:set package 'Visual' build argument 'ament_cmake_args' from command line to 'None'
+[0.202s] Level 5:colcon.colcon_core.verb:set package 'Visual' build argument 'catkin_cmake_args' from command line to 'None'
+[0.202s] Level 5:colcon.colcon_core.verb:set package 'Visual' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.202s] DEBUG:colcon.colcon_core.verb:Building package 'Visual' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/rhys/ros2_ws/src/RS2/Visual/build/Visual', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/rhys/ros2_ws/src/RS2/Visual/install/Visual', 'merge_install': False, 'path': '/home/rhys/ros2_ws/src/RS2/Visual', 'symlink_install': False, 'test_result_base': None}
+[0.202s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.203s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.203s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/rhys/ros2_ws/src/RS2/Visual' with build type 'ament_cmake'
+[0.203s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/rhys/ros2_ws/src/RS2/Visual'
+[0.205s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.205s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.205s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.214s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/rhys/ros2_ws/src/RS2/Visual/build/Visual': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rhys/ros2_ws/install/turtlebot3_teleop:/home/rhys/ros2_ws/install/turtlebot3_example:/home/rhys/ros2_ws/install/drone_control:/opt/ros/humble /usr/bin/cmake /home/rhys/ros2_ws/src/RS2/Visual -DCMAKE_INSTALL_PREFIX=/home/rhys/ros2_ws/src/RS2/Visual/install/Visual
+[1.969s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/rhys/ros2_ws/src/RS2/Visual/build/Visual' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rhys/ros2_ws/install/turtlebot3_teleop:/home/rhys/ros2_ws/install/turtlebot3_example:/home/rhys/ros2_ws/install/drone_control:/opt/ros/humble /usr/bin/cmake /home/rhys/ros2_ws/src/RS2/Visual -DCMAKE_INSTALL_PREFIX=/home/rhys/ros2_ws/src/RS2/Visual/install/Visual
+[1.971s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/rhys/ros2_ws/src/RS2/Visual/build/Visual': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rhys/ros2_ws/install/turtlebot3_teleop:/home/rhys/ros2_ws/install/turtlebot3_example:/home/rhys/ros2_ws/install/drone_control:/opt/ros/humble /usr/bin/cmake --build /home/rhys/ros2_ws/src/RS2/Visual/build/Visual -- -j16 -l16
+[20.224s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/rhys/ros2_ws/src/RS2/Visual/build/Visual' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rhys/ros2_ws/install/turtlebot3_teleop:/home/rhys/ros2_ws/install/turtlebot3_example:/home/rhys/ros2_ws/install/drone_control:/opt/ros/humble /usr/bin/cmake --build /home/rhys/ros2_ws/src/RS2/Visual/build/Visual -- -j16 -l16
+[20.233s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/rhys/ros2_ws/src/RS2/Visual/build/Visual': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rhys/ros2_ws/install/turtlebot3_teleop:/home/rhys/ros2_ws/install/turtlebot3_example:/home/rhys/ros2_ws/install/drone_control:/opt/ros/humble /usr/bin/cmake --install /home/rhys/ros2_ws/src/RS2/Visual/build/Visual
+[20.253s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(Visual)
+[20.259s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/rhys/ros2_ws/src/RS2/Visual/build/Visual' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/rhys/ros2_ws/install/turtlebot3_teleop:/home/rhys/ros2_ws/install/turtlebot3_example:/home/rhys/ros2_ws/install/drone_control:/opt/ros/humble /usr/bin/cmake --install /home/rhys/ros2_ws/src/RS2/Visual/build/Visual
+[20.261s] Level 1:colcon.colcon_core.environment:checking '/home/rhys/ros2_ws/src/RS2/Visual/install/Visual' for CMake module files
+[20.261s] Level 1:colcon.colcon_core.environment:checking '/home/rhys/ros2_ws/src/RS2/Visual/install/Visual' for CMake config files
+[20.261s] Level 1:colcon.colcon_core.shell:create_environment_hook('Visual', 'cmake_prefix_path')
+[20.262s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rhys/ros2_ws/src/RS2/Visual/install/Visual/share/Visual/hook/cmake_prefix_path.ps1'
+[20.263s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/rhys/ros2_ws/src/RS2/Visual/install/Visual/share/Visual/hook/cmake_prefix_path.dsv'
+[20.263s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rhys/ros2_ws/src/RS2/Visual/install/Visual/share/Visual/hook/cmake_prefix_path.sh'
+[20.264s] Level 1:colcon.colcon_core.environment:checking '/home/rhys/ros2_ws/src/RS2/Visual/install/Visual/lib'
+[20.264s] Level 1:colcon.colcon_core.environment:checking '/home/rhys/ros2_ws/src/RS2/Visual/install/Visual/bin'
+[20.264s] Level 1:colcon.colcon_core.environment:checking '/home/rhys/ros2_ws/src/RS2/Visual/install/Visual/lib/pkgconfig/Visual.pc'
+[20.264s] Level 1:colcon.colcon_core.environment:checking '/home/rhys/ros2_ws/src/RS2/Visual/install/Visual/lib/python3.10/site-packages'
+[20.264s] Level 1:colcon.colcon_core.environment:checking '/home/rhys/ros2_ws/src/RS2/Visual/install/Visual/bin'
+[20.265s] INFO:colcon.colcon_core.shell:Creating package script '/home/rhys/ros2_ws/src/RS2/Visual/install/Visual/share/Visual/package.ps1'
+[20.265s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/rhys/ros2_ws/src/RS2/Visual/install/Visual/share/Visual/package.dsv'
+[20.266s] INFO:colcon.colcon_core.shell:Creating package script '/home/rhys/ros2_ws/src/RS2/Visual/install/Visual/share/Visual/package.sh'
+[20.266s] INFO:colcon.colcon_core.shell:Creating package script '/home/rhys/ros2_ws/src/RS2/Visual/install/Visual/share/Visual/package.bash'
+[20.267s] INFO:colcon.colcon_core.shell:Creating package script '/home/rhys/ros2_ws/src/RS2/Visual/install/Visual/share/Visual/package.zsh'
+[20.267s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/rhys/ros2_ws/src/RS2/Visual/install/Visual/share/colcon-core/packages/Visual)
+[20.267s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(Visual)
+[20.268s] Level 1:colcon.colcon_core.environment:checking '/home/rhys/ros2_ws/src/RS2/Visual/install/Visual' for CMake module files
+[20.270s] Level 1:colcon.colcon_core.environment:checking '/home/rhys/ros2_ws/src/RS2/Visual/install/Visual' for CMake config files
+[20.270s] Level 1:colcon.colcon_core.shell:create_environment_hook('Visual', 'cmake_prefix_path')
+[20.270s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rhys/ros2_ws/src/RS2/Visual/install/Visual/share/Visual/hook/cmake_prefix_path.ps1'
+[20.271s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/rhys/ros2_ws/src/RS2/Visual/install/Visual/share/Visual/hook/cmake_prefix_path.dsv'
+[20.271s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/rhys/ros2_ws/src/RS2/Visual/install/Visual/share/Visual/hook/cmake_prefix_path.sh'
+[20.271s] Level 1:colcon.colcon_core.environment:checking '/home/rhys/ros2_ws/src/RS2/Visual/install/Visual/lib'
+[20.272s] Level 1:colcon.colcon_core.environment:checking '/home/rhys/ros2_ws/src/RS2/Visual/install/Visual/bin'
+[20.272s] Level 1:colcon.colcon_core.environment:checking '/home/rhys/ros2_ws/src/RS2/Visual/install/Visual/lib/pkgconfig/Visual.pc'
+[20.272s] Level 1:colcon.colcon_core.environment:checking '/home/rhys/ros2_ws/src/RS2/Visual/install/Visual/lib/python3.10/site-packages'
+[20.272s] Level 1:colcon.colcon_core.environment:checking '/home/rhys/ros2_ws/src/RS2/Visual/install/Visual/bin'
+[20.272s] INFO:colcon.colcon_core.shell:Creating package script '/home/rhys/ros2_ws/src/RS2/Visual/install/Visual/share/Visual/package.ps1'
+[20.272s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/rhys/ros2_ws/src/RS2/Visual/install/Visual/share/Visual/package.dsv'
+[20.273s] INFO:colcon.colcon_core.shell:Creating package script '/home/rhys/ros2_ws/src/RS2/Visual/install/Visual/share/Visual/package.sh'
+[20.273s] INFO:colcon.colcon_core.shell:Creating package script '/home/rhys/ros2_ws/src/RS2/Visual/install/Visual/share/Visual/package.bash'
+[20.273s] INFO:colcon.colcon_core.shell:Creating package script '/home/rhys/ros2_ws/src/RS2/Visual/install/Visual/share/Visual/package.zsh'
+[20.274s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/rhys/ros2_ws/src/RS2/Visual/install/Visual/share/colcon-core/packages/Visual)
+[20.274s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[20.274s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[20.274s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[20.274s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[20.278s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[20.278s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[20.278s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[20.285s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[20.285s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/rhys/ros2_ws/src/RS2/Visual/install/local_setup.ps1'
+[20.286s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/rhys/ros2_ws/src/RS2/Visual/install/_local_setup_util_ps1.py'
+[20.287s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/rhys/ros2_ws/src/RS2/Visual/install/setup.ps1'
+[20.288s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/rhys/ros2_ws/src/RS2/Visual/install/local_setup.sh'
+[20.289s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/rhys/ros2_ws/src/RS2/Visual/install/_local_setup_util_sh.py'
+[20.289s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/rhys/ros2_ws/src/RS2/Visual/install/setup.sh'
+[20.291s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/rhys/ros2_ws/src/RS2/Visual/install/local_setup.bash'
+[20.291s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/rhys/ros2_ws/src/RS2/Visual/install/setup.bash'
+[20.292s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/rhys/ros2_ws/src/RS2/Visual/install/local_setup.zsh'
+[20.292s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/rhys/ros2_ws/src/RS2/Visual/install/setup.zsh'

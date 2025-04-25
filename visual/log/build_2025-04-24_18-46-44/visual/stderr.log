@@ -1,0 +1,5 @@
+gmake[2]: *** [CMakeFiles/crop_node.dir/build.make:76: CMakeFiles/crop_node.dir/src/CropNode.cpp.o] Interrupt
+gmake[2]: *** [CMakeFiles/brand_recognition.dir/build.make:76: CMakeFiles/brand_recognition.dir/src/BrandRecognition.cpp.o] Interrupt
+gmake[1]: *** [CMakeFiles/Makefile2:305: CMakeFiles/crop_node.dir/all] Interrupt
+gmake[1]: *** [CMakeFiles/Makefile2:253: CMakeFiles/brand_recognition.dir/all] Interrupt
+gmake: *** [Makefile:146: all] Interrupt

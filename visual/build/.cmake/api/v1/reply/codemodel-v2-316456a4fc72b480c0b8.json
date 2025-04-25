@@ -1,0 +1,133 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-9e3393e05d023e271dcc.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "visual",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "bottle_detector_ort::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-bottle_detector_ort-Debug-c80dc5ff1addc4e5ad9c.json",
+					"name" : "bottle_detector_ort",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "brand_recognition::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-brand_recognition-Debug-dde3518293e28119cb9a.json",
+					"name" : "brand_recognition",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "camera_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-camera_node-Debug-17e2a004420579ac3ac5.json",
+					"name" : "camera_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cartesian::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cartesian-Debug-98f9ac5c2faa873c6637.json",
+					"name" : "cartesian",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "crop_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-crop_node-Debug-15a41e1f5e9632257ba3.json",
+					"name" : "crop_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "esky_detector::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-esky_detector-Debug-9f9a4382e897494ba50c.json",
+					"name" : "esky_detector",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "fusion_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-fusion_node-Debug-0688f4e7f63bb29dba68.json",
+					"name" : "fusion_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-Debug-3b8d444d27b5a950b90e.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "visual_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-visual_uninstall-Debug-9a4ddca710c0e9d839d9.json",
+					"name" : "visual_uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/rhys/ros2_ws/src/RS2/visual/build",
+		"source" : "/home/rhys/ros2_ws/src/RS2/visual"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}
