@@ -1,0 +1,99 @@
+Terminal 1:
+source /opt/ros/humble/setup.bash
+source ~/ros2_ws/install/setup.bash
+ros2 launch ur_robot_driver ur_control.launch.py \
+  ur_type:=ur3e \
+  robot_ip:=0.0.0.0 \
+  use_fake_hardware:=true \
+  initial_joint_controller:=scaled_joint_trajectory_controller \
+  launch_rviz:=false
+  
+  Terminal 2:
+  source /opt/ros/humble/setup.bash
+source ~/ros2_ws/install/setup.bash
+  ros2 launch ur_moveit_config ur_moveit.launch.py   ur_type:=ur3e   launch_rviz:=true
+
+Terminal 3:
+
+source /opt/ros/humble/setup.bash
+source ~/ros2_ws/install/setup.bash
+cd ~/ros2_ws/src
+colcon build --packages-select ur3_cartesian_motion
+source install/setup.bash
+ros2 run ur3_cartesian_motion ur3_cartesian_motion_node
+
+
+Terminal 4:
+first two might be needed rest needed:;
+
+source /opt/ros/humble/setup.bash
+source ~/ros2_ws/install/setup.bash
+
+cd ~/ros2_ws
+colcon build --packages-select drink_memory
+source install/setup.bash
+ros2 run drink_memory memory_decision --ros-args -p total_slots:=9 -p test_step:=3
+
+Terminal 5:
+
+#ros2 topic pub /requested_drink std_msgs/String "{data: 'Pasito' }" -1
+#ros2 topic pub /scanned_slot std_msgs/Int32 "{data: 1}" - 1
+#ros2 topic pub /scanned_drink std_msgs/String " {data: 'empty'}" - 1
+
+# ------------- 1st request: Pasito -------------
+ros2 topic pub /requested_drink std_msgs/String "{data: 'Pasito'}" -1
+
+# slot 1 scan  ➜ sprite
+ros2 topic pub /scanned_slot  std_msgs/Int32  "{data: 1}" -1
+ros2 topic pub /scanned_drink std_msgs/String "{data: 'Sprite'}" -1
+
+# slot 2 scan  ➜ coke
+ros2 topic pub /scanned_slot  std_msgs/Int32  "{data: 2}" -1
+ros2 topic pub /scanned_drink std_msgs/String "{data: 'Coke'}" -1
+
+# slot 3 scan  ➜ pasito   (found – slot3 now empty)
+ros2 topic pub /scanned_slot  std_msgs/Int32  "{data: 3}" -1
+ros2 topic pub /scanned_drink std_msgs/String "{data: 'Pasito'}" -1
+
+
+# ------------- 2nd request: Coke -------------
+ros2 topic pub /requested_drink std_msgs/String "{data: 'Coke'}" -1
+# (node should jump straight to slot 2)
+
+# slot 2 scan  ➜ coke (found – slot2 now empty)
+ros2 topic pub /scanned_slot  std_msgs/Int32  "{data: 2}" -1
+ros2 topic pub /scanned_drink std_msgs/String "{data: 'Coke'}" -1
+
+
+# ------------- 3rd request: Solo -------------
+ros2 topic pub /requested_drink std_msgs/String "{data: 'Solo'}" -1
+# (node avoids emptied {2,3} and wrong {1}; goes to slot 4)
+
+# slot 4 scan  ➜ lemonade (wrong)
+ros2 topic pub /scanned_slot  std_msgs/Int32  "{data: 4}" -1
+ros2 topic pub /scanned_drink std_msgs/String "{data: 'Lemonade'}" -1
+
+# slot 5 scan  ➜ solo  (found – slot5 empty)
+ros2 topic pub /scanned_slot  std_msgs/Int32  "{data: 5}" -1
+ros2 topic pub /scanned_drink std_msgs/String "{data: 'Solo'}" -1
+
+
+# ------------- 4th request: Pasito (again) -------------
+ros2 topic pub /requested_drink std_msgs/String "{data: 'Pasito'}" -1
+# slot 3 was emptied earlier, so node does NOT prioritise it.
+# It will pick the next unchecked slot (6).
+
+# slot 6 scan  ➜ unknown  (empty)
+ros2 topic pub /scanned_slot  std_msgs/Int32  "{data: 6}" -1
+ros2 topic pub /scanned_drink std_msgs/String "{data: ‘Pasito’}” -1
+# (node continues with slots 7, 8, 9 until it discovers no Pasito remains)///this has been changed
+
+
+# ------------- 5th request: Sprite -------------
+ros2 topic pub /requested_drink std_msgs/String "{data: 'Sprite'}" -1
+# Sprite’s location (slot 1) is still known & not emptied, so:
+# ➜ node jumps directly to slot 1
+
+# slot 1 scan  ➜ sprite (found – slot1 empty)
+ros2 topic pub /scanned_slot  std_msgs/Int32  "{data: 1}" -1
+ros2 topic pub /scanned_drink std_msgs/String "{data: 'Sprite'}" -1
