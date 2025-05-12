@@ -1,0 +1,101 @@
+#include <rclcpp/rclcpp.hpp>
+#include <moveit/move_group_interface/move_group_interface.h>
+#include <moveit_msgs/msg/robot_trajectory.hpp>
+#include <geometry_msgs/msg/pose_stamped.hpp>
+#include <tf2_geometry_msgs/tf2_geometry_msgs.hpp>
+
+class UR3CartesianMotionNode : public rclcpp::Node
+{
+public:
+  UR3CartesianMotionNode()
+    : Node("ur3_cartesian_motion_node")
+  {
+    // Delay to allow MoveIt and controllers to fully initialize
+    timer_ = this->create_wall_timer(
+      std::chrono::seconds(2),
+      std::bind(&UR3CartesianMotionNode::initialize, this));
+  }
+
+private:
+  void initialize()
+  {
+    timer_->cancel();
+    RCLCPP_INFO(get_logger(), "Initializing UR3 Cartesian Motion Node...");
+
+    auto move_group = std::make_shared<moveit::planning_interface::MoveGroupInterface>(
+      shared_from_this(), "ur_manipulator");
+
+    move_group->setPoseReferenceFrame("base_link");
+
+    // Optional: slow down for extra smoothness
+    move_group->setMaxVelocityScalingFactor(0.1);
+    move_group->setMaxAccelerationScalingFactor(0.1);
+
+    // Get the current pose
+    auto current_pose = move_group->getCurrentPose().pose;
+
+    // Define your three Cartesian goals
+    std::vector<geometry_msgs::msg::Pose> goals;
+    geometry_msgs::msg::Pose p = current_pose;
+
+    p.position.x = 0.3; p.position.y = 0.2; p.position.z = 0.3;
+    goals.push_back(p);
+
+    p.position.x = 0.4;                // move out in X
+    goals.push_back(p);
+
+    p.position.y = 0.0;                // move back in Y
+    goals.push_back(p);
+
+    // For each goal, compute & execute a straight‐line Cartesian path
+    for (size_t i = 0; i < goals.size(); ++i)
+    {
+      const auto &target = goals[i];
+      RCLCPP_INFO(get_logger(),
+                  "Cartesian path to goal %zu: x=%.3f y=%.3f z=%.3f",
+                  i+1,
+                  target.position.x,
+                  target.position.y,
+                  target.position.z);
+
+      std::vector<geometry_msgs::msg::Pose> waypoints;
+      waypoints.push_back(move_group->getCurrentPose().pose);
+      waypoints.push_back(target);
+
+      moveit_msgs::msg::RobotTrajectory trajectory;
+      // eef_step = 1cm, jump_threshold = 0.0
+      double fraction = move_group->computeCartesianPath(
+        waypoints, 
+        0.01, 
+        0.0, 
+        trajectory);
+
+      if (fraction < 0.99) {
+        RCLCPP_WARN(get_logger(),
+                    "Only %.2f%% of path planned. Skipping goal %zu.",
+                    fraction * 100.0, i+1);
+        continue;
+      }
+
+      // Wrap into a plan & execute
+      moveit::planning_interface::MoveGroupInterface::Plan plan;
+      plan.trajectory_ = trajectory;
+      move_group->execute(plan);
+      RCLCPP_INFO(get_logger(),
+                  "Executed Cartesian path to goal %zu.", i+1);
+    }
+
+    RCLCPP_INFO(get_logger(), "All Cartesian goals processed.");
+  }
+
+  rclcpp::TimerBase::SharedPtr timer_;
+};
+
+int main(int argc, char **argv)
+{
+  rclcpp::init(argc, argv);
+  auto node = std::make_shared<UR3CartesianMotionNode>();
+  rclcpp::spin(node);
+  rclcpp::shutdown();
+  return 0;
+}
