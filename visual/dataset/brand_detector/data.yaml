@@ -1,0 +1,17 @@
+train: /home/rhys/ros2_ws/src/RS2/visual/dataset/brand_detector/images/train
+val: /home/rhys/ros2_ws/src/RS2/visual/dataset/brand_detector/images/val
+
+nc: 12
+names:
+  - Asahi
+  - CarltonDry
+  - Corona
+  - GreatNorthern_Original
+  - Hahn_Premium
+  - Heineken
+  - JamesSquire_Lashes
+  - Sapporo
+  - StoneWood
+  - Tooheys_New
+  - Tooheys_Old
+  - XXXX_Gold

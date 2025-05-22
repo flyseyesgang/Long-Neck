@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="(empty)"
+	BuildStamp="20250521-0119-Experimental"
+	Name="rhys-laptop"
+	Generator="ctest-3.22.1"
+	CompilerName="/usr/bin/c++"
+	CompilerVersion="11.4.0"
+	OSName="Linux"
+	Hostname="rhys-laptop"
+	OSRelease="6.8.0-59-generic"
+	OSVersion="#61~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Tue Apr 15 17:03:15 UTC 2"
+	OSPlatform="x86_64"
+	Is64Bits="1"
+	VendorString="AuthenticAMD"
+	VendorID="Advanced Micro Devices"
+	FamilyID="25"
+	ModelID="80"
+	ProcessorCacheSize="512"
+	NumberOfLogicalCPU="16"
+	NumberOfPhysicalCPU="8"
+	TotalVirtualMemory="0"
+	TotalPhysicalMemory="15389"
+	LogicalProcessorsPerPhysical="2"
+	ProcessorClockFrequency="1850.95"
+	>
+	<Testing>
+		<StartDateTime>May 22 09:48 AEST</StartDateTime>
+		<StartTestTime>1747871337</StartTestTime>
+		<TestList/>
+		<EndDateTime>May 22 09:48 AEST</EndDateTime>
+		<EndTestTime>1747871337</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Testing>
+</Site>

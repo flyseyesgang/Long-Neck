@@ -4,6 +4,7 @@
 #include <cv_bridge/cv_bridge.h>
 #include <opencv2/opencv.hpp>
 #include <onnxruntime_cxx_api.h>
+#include <vision_msgs/msg/detection2_d_array.hpp>
 #include <ament_index_cpp/get_package_share_directory.hpp>
 using std::placeholders::_1;
 
@@ -25,7 +26,10 @@ public:
 
     sub_ = create_subscription<sensor_msgs::msg::Image>("webcam/image_raw",1,
             std::bind(&Detector::cb,this,_1));
-    pub_ = create_publisher<sensor_msgs::msg::Image>("yolo_detections",10);
+    // pub_ = create_publisher<sensor_msgs::msg::Image>("yolo_detections",10);
+    pub_img_ = create_publisher<sensor_msgs::msg::Image>("yolo_detections_image", 10);
+    pub_det_ = create_publisher<vision_msgs::msg::Detection2DArray>("yolo_detections", 10);
+
   }
 
 private:
@@ -33,7 +37,7 @@ private:
   void cb(const sensor_msgs::msg::Image::SharedPtr m)
   {
     constexpr int   S   = 640;
-    constexpr float THR = 0.15f;
+    constexpr float THR = 0.40f;
 
     cv::Mat img = cv_bridge::toCvCopy(m,"bgr8")->image;
     float s = float(S)/std::max(img.rows,img.cols);
@@ -86,8 +90,27 @@ private:
     std::vector<int> keep;
     cv::dnn::NMSBoxes(boxes,scores,THR,0.45f,keep);
 
-    for(int k:keep) cv::rectangle(img,boxes[k],{0,255,0},2);
-    pub_->publish(*cv_bridge::CvImage(m->header,"bgr8",img).toImageMsg());
+    // for(int k:keep) cv::rectangle(img,boxes[k],{0,255,0},2);
+    // pub_->publish(*cv_bridge::CvImage(m->header,"bgr8",img).toImageMsg());
+    for(int k:keep) cv::rectangle(img, boxes[k], {0,255,0}, 2);
+    pub_img_->publish(*cv_bridge::CvImage(m->header,"bgr8", img).toImageMsg());
+
+    // 2) republish detections as Detection2DArray
+    vision_msgs::msg::Detection2DArray darr;
+    darr.header = m->header;
+    darr.detections.reserve(keep.size());
+    for (int idx : keep) {
+      auto &b = boxes[idx];
+      vision_msgs::msg::Detection2D det;
+      // fill the bounding‐box
+      det.bbox.center.position.x = b.x + b.width*0.5;
+      det.bbox.center.position.y = b.y + b.height*0.5;
+      det.bbox.size_x = b.width;
+      det.bbox.size_y = b.height;
+      darr.detections.push_back(std::move(det));
+    }
+    pub_det_->publish(darr);
+
   }
 
   /* members */
@@ -95,7 +118,9 @@ private:
   std::unique_ptr<Ort::Session> sess_; Ort::MemoryInfo mem_;
   std::string in_, out_;
   rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr sub_;
-  rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr    pub_;
+  // rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr    pub_;
+  rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr    pub_img_;
+  rclcpp::Publisher<vision_msgs::msg::Detection2DArray>::SharedPtr pub_det_;
 };
 
 int main(int argc,char** argv){
@@ -103,3 +128,4 @@ int main(int argc,char** argv){
   rclcpp::spin(std::make_shared<Detector>());
   rclcpp::shutdown(); return 0;
 }
+// src/BottleDetector.cpp

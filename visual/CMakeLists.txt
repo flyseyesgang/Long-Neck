@@ -20,6 +20,9 @@ find_package(OpenCV REQUIRED COMPONENTS core imgproc dnn)
 find_package(ament_index_cpp REQUIRED)
 
 include_directories(include ${OpenCV_INCLUDE_DIRS})
+set(ONNXRUNTIME_ROOT "$ENV{HOME}/ros2_ws/onnxruntime")
+include_directories(${ONNXRUNTIME_ROOT}/include)
+link_directories(${ONNXRUNTIME_ROOT}/lib)
 
 # camera node
 add_executable(camera_node src/camera_node.cpp)
@@ -29,17 +32,15 @@ ament_target_dependencies(camera_node
 # esky detector
 add_executable(esky_detector src/EskyDetector.cpp)
 ament_target_dependencies(esky_detector
-  rclcpp sensor_msgs cv_bridge OpenCV)
+  rclcpp sensor_msgs cv_bridge OpenCV ament_index_cpp)
+target_link_libraries(esky_detector onnxruntime)
 
 ### ONNX Runtime (absolute path) ####
-set(ONNXRUNTIME_ROOT "$ENV{HOME}/ros2_ws/onnxruntime")
-include_directories(${ONNXRUNTIME_ROOT}/include)
-link_directories(${ONNXRUNTIME_ROOT}/lib)
 
 
 add_executable(bottle_detector_ort src/BottleDetector.cpp)
 ament_target_dependencies(bottle_detector_ort
-  rclcpp sensor_msgs cv_bridge OpenCV
+  rclcpp sensor_msgs cv_bridge OpenCV vision_msgs
 )
 target_link_libraries(bottle_detector_ort
   onnxruntime               # resolves to libonnxruntime.so
@@ -48,13 +49,15 @@ target_link_libraries(bottle_detector_ort
 # cartesian estimator
 add_executable(cartesian src/Cartesian.cpp)
 ament_target_dependencies(cartesian
-  rclcpp sensor_msgs geometry_msgs cv_bridge OpenCV)
+  rclcpp sensor_msgs geometry_msgs cv_bridge OpenCV vision_msgs)
 
 # brand recognizer
 add_executable(brand_recognition src/BrandRecognition.cpp)
 ament_target_dependencies(brand_recognition
-  rclcpp sensor_msgs vision_msgs cv_bridge OpenCV)
-
+  rclcpp sensor_msgs vision_msgs cv_bridge OpenCV ament_index_cpp) 
+target_link_libraries(brand_recognition
+onnxruntime               # resolves to libonnxruntime.so
+)
 # fusion node
 add_executable(fusion_node src/main.cpp)
 ament_target_dependencies(fusion_node
