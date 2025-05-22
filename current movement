@@ -1,0 +1,191 @@
+#include <rclcpp/rclcpp.hpp>
+#include <moveit/move_group_interface/move_group_interface.h>
+#include <moveit_msgs/msg/robot_trajectory.hpp>
+#include <geometry_msgs/msg/pose_stamped.hpp>
+#include <tf2/LinearMath/Quaternion.h>
+#include <tf2_geometry_msgs/tf2_geometry_msgs.hpp>
+#include <chrono>
+#include <cmath>
+
+class UR3CartesianMotionNode : public rclcpp::Node
+{
+public:
+  UR3CartesianMotionNode()
+    : Node("ur3_cartesian_motion_node")
+  {
+    declare_parameter("velocity_scaling", 0.1);
+    get_parameter("velocity_scaling", velocity_scaling_);
+
+    timer_ = this->create_wall_timer(
+      std::chrono::seconds(2),
+      std::bind(&UR3CartesianMotionNode::initialize, this));
+  }
+
+private:
+  void initialize()
+  {
+    double jump_threshold = 0.0;
+    timer_->cancel();
+    RCLCPP_INFO(get_logger(), "Initializing UR3 Cartesian Motion Node...");
+
+    auto move_group = std::make_shared<moveit::planning_interface::MoveGroupInterface>(
+      shared_from_this(), "ur_manipulator");
+
+
+    // 1) grab the live joint values
+    auto joints = move_group->getCurrentJointValues();
+
+    // 2) set them right back as a target
+    move_group->setJointValueTarget(joints);
+
+    // 3) plan & execute a “do-nothing” trajectory
+    MoveGroupInterface::Plan hold_plan;
+    if (move_group->plan(hold_plan)) {
+      move_group->execute(hold_plan);
+      RCLCPP_INFO(get_logger(), "Holding start pose to prevent droop.");
+    } else {
+      RCLCPP_WARN(get_logger(), "Hold-plan failed; you may see droop.");
+    }
+
+    
+    move_group->setPoseReferenceFrame("base_link");
+
+    // get the live start state
+    move_group->setStartStateToCurrentState();
+    auto current_pose = move_group->getCurrentPose().pose;
+
+    // build a down-pointing quaternion once
+    tf2::Quaternion down_q;
+    down_q.setRPY(M_PI, 0.0, 0.0);
+    auto down_orient = tf2::toMsg(down_q);
+
+    // now create stamped goals
+    std::vector<geometry_msgs::msg::PoseStamped> goals_stamped;
+
+    geometry_msgs::msg::PoseStamped gs;
+    gs.header.frame_id = "base_link";
+    gs.header.stamp = this->now();
+    gs.pose = current_pose;
+
+    // Goal 1: lift straight up, keep tool pointing down
+
+    gs.pose.position.x = 0.2;
+    gs.pose.position.y = 0.2;
+    gs.pose.position.z = 0.2;
+    gs.pose.orientation = down_orient;
+    goals_stamped.push_back(gs);
+
+    // // Goal 2: move +X
+    // gs.header.stamp = this->now();
+    // gs.pose = current_pose;
+    // gs.pose.position.x += 0.1;
+    // gs.pose.orientation = down_orient;
+    // goals_stamped.push_back(gs);
+
+    // // Goal 3: move –Y
+    // gs.header.stamp = this->now();
+    // gs.pose = current_pose;
+    // gs.pose.position.y -= 0.1;
+    // gs.pose.orientation = down_orient;
+    // goals_stamped.push_back(gs);
+
+    // process them
+    for (size_t i = 0; i < goals_stamped.size(); ++i)
+      {
+        const auto &pst = goals_stamped[i];
+      
+        // 1) Grab the live start and goal poses
+        geometry_msgs::msg::Pose start = move_group->getCurrentPose().pose;
+        geometry_msgs::msg::Pose goal  = pst.pose;
+      
+        // 2) First try the full straight-line
+        move_group->setStartStateToCurrentState();
+        moveit_msgs::msg::RobotTrajectory full_traj;
+        double full_frac = move_group->computeCartesianPath(
+          { start, goal }, 0.01, jump_threshold, full_traj);
+        
+        RCLCPP_INFO(get_logger(),
+          "Goal %zu: full path = %.1f%%", i+1, full_frac*100.0);
+        
+        if (full_frac >= 0.99) {
+          // success – scale & execute
+          scaleTrajectorySpeed(full_traj, velocity_scaling_);
+          moveit::planning_interface::MoveGroupInterface::Plan plan;
+          plan.trajectory_ = full_traj;
+          move_group->execute(plan);
+          continue;
+        }
+      
+        // 3) Otherwise split via midpoint
+        RCLCPP_WARN(get_logger(),
+          "  Only %.1f%% planned → splitting move in half…", full_frac*100.0);
+      
+        // compute midpoint (linear interp + copy orientation)
+        geometry_msgs::msg::Pose mid;
+        mid.position.x = 0.5*(start.position.x + goal.position.x);
+        mid.position.y = 0.5*(start.position.y + goal.position.y);
+        mid.position.z = 0.5*(start.position.z + goal.position.z);
+        mid.orientation = goal.orientation;  // keep your down-orientation
+      
+        // 3a) plan & execute first half
+        move_group->setStartStateToCurrentState();
+        moveit_msgs::msg::RobotTrajectory t1;
+        double f1 = move_group->computeCartesianPath(
+          { start, mid }, 0.01, jump_threshold, t1);
+        if (f1 > 0.5) {
+          scaleTrajectorySpeed(t1, velocity_scaling_);
+          moveit::planning_interface::MoveGroupInterface::Plan p1;
+          p1.trajectory_ = t1;
+          move_group->execute(p1);
+        } else {
+          RCLCPP_ERROR(get_logger(),
+            "  First half failed (%.1f%%), skipping goal %zu", f1*100.0, i+1);
+          continue;
+        }
+      
+        // 3b) plan & execute second half
+        move_group->setStartStateToCurrentState();
+        moveit_msgs::msg::RobotTrajectory t2;
+        double f2 = move_group->computeCartesianPath(
+          { mid, goal }, 0.01, jump_threshold, t2);
+        if (f2 > 0.5) {
+          scaleTrajectorySpeed(t2, velocity_scaling_);
+          moveit::planning_interface::MoveGroupInterface::Plan p2;
+          p2.trajectory_ = t2;
+          move_group->execute(p2);
+        } else {
+          RCLCPP_ERROR(get_logger(),
+            "  Second half failed (%.1f%%), goal %zu incomplete, resetting position", f2*100.0, i+1);
+          
+          
+        }
+      }
+
+
+    RCLCPP_INFO(get_logger(), "All stamped Cartesian goals done.");
+  }
+
+  void scaleTrajectorySpeed(
+    moveit_msgs::msg::RobotTrajectory &traj,
+    double scale)
+  {
+    for (auto &pt : traj.joint_trajectory.points) {
+      for (auto &v : pt.velocities)    v *= scale;
+      for (auto &a : pt.accelerations) a *= scale;
+      int64_t ns = int64_t(pt.time_from_start.sec)*1e9 + pt.time_from_start.nanosec;
+      pt.time_from_start = rclcpp::Duration(std::chrono::nanoseconds(int64_t(ns/scale)));
+    }
+  }
+
+  rclcpp::TimerBase::SharedPtr timer_;
+  double velocity_scaling_;
+};
+
+int main(int argc, char **argv)
+{
+  rclcpp::init(argc, argv);
+  auto node = std::make_shared<UR3CartesianMotionNode>();
+  rclcpp::spin(node);
+  rclcpp::shutdown();
+  return 0;
+}
