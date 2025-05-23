@@ -1,0 +1,174 @@
+[0.220s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--packages-select', 'ur3_cartesian_motion']
+[0.220s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=2, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=['ur3_cartesian_motion'], packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0xffff9f55de40>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0xffff9f676e00>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0xffff9f676e00>>, mixin_verb=('build',))
+[0.617s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.617s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.617s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.617s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.617s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.618s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.618s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/parallels/ros2_ws/src'
+[0.618s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.618s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.618s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.618s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.618s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.618s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.618s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.618s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.618s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.640s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.640s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.640s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.640s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.640s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.641s] Level 1:colcon.colcon_core.package_identification:_identify(Universal_Robots_ROS2_GZ_Simulation) by extensions ['ignore', 'ignore_ament_install']
+[0.641s] Level 1:colcon.colcon_core.package_identification:_identify(Universal_Robots_ROS2_GZ_Simulation) by extension 'ignore'
+[0.641s] Level 1:colcon.colcon_core.package_identification:_identify(Universal_Robots_ROS2_GZ_Simulation) by extension 'ignore_ament_install'
+[0.641s] Level 1:colcon.colcon_core.package_identification:_identify(Universal_Robots_ROS2_GZ_Simulation) by extensions ['colcon_pkg']
+[0.641s] Level 1:colcon.colcon_core.package_identification:_identify(Universal_Robots_ROS2_GZ_Simulation) by extension 'colcon_pkg'
+[0.641s] Level 1:colcon.colcon_core.package_identification:_identify(Universal_Robots_ROS2_GZ_Simulation) by extensions ['colcon_meta']
+[0.641s] Level 1:colcon.colcon_core.package_identification:_identify(Universal_Robots_ROS2_GZ_Simulation) by extension 'colcon_meta'
+[0.641s] Level 1:colcon.colcon_core.package_identification:_identify(Universal_Robots_ROS2_GZ_Simulation) by extensions ['ros']
+[0.641s] Level 1:colcon.colcon_core.package_identification:_identify(Universal_Robots_ROS2_GZ_Simulation) by extension 'ros'
+[0.641s] Level 1:colcon.colcon_core.package_identification:_identify(Universal_Robots_ROS2_GZ_Simulation) by extensions ['cmake', 'python']
+[0.641s] Level 1:colcon.colcon_core.package_identification:_identify(Universal_Robots_ROS2_GZ_Simulation) by extension 'cmake'
+[0.641s] Level 1:colcon.colcon_core.package_identification:_identify(Universal_Robots_ROS2_GZ_Simulation) by extension 'python'
+[0.641s] Level 1:colcon.colcon_core.package_identification:_identify(Universal_Robots_ROS2_GZ_Simulation) by extensions ['python_setup_py']
+[0.641s] Level 1:colcon.colcon_core.package_identification:_identify(Universal_Robots_ROS2_GZ_Simulation) by extension 'python_setup_py'
+[0.642s] Level 1:colcon.colcon_core.package_identification:_identify(Universal_Robots_ROS2_GZ_Simulation/ur_simulation_gz) by extensions ['ignore', 'ignore_ament_install']
+[0.642s] Level 1:colcon.colcon_core.package_identification:_identify(Universal_Robots_ROS2_GZ_Simulation/ur_simulation_gz) by extension 'ignore'
+[0.642s] Level 1:colcon.colcon_core.package_identification:_identify(Universal_Robots_ROS2_GZ_Simulation/ur_simulation_gz) by extension 'ignore_ament_install'
+[0.642s] Level 1:colcon.colcon_core.package_identification:_identify(Universal_Robots_ROS2_GZ_Simulation/ur_simulation_gz) by extensions ['colcon_pkg']
+[0.642s] Level 1:colcon.colcon_core.package_identification:_identify(Universal_Robots_ROS2_GZ_Simulation/ur_simulation_gz) by extension 'colcon_pkg'
+[0.642s] Level 1:colcon.colcon_core.package_identification:_identify(Universal_Robots_ROS2_GZ_Simulation/ur_simulation_gz) by extensions ['colcon_meta']
+[0.642s] Level 1:colcon.colcon_core.package_identification:_identify(Universal_Robots_ROS2_GZ_Simulation/ur_simulation_gz) by extension 'colcon_meta'
+[0.642s] Level 1:colcon.colcon_core.package_identification:_identify(Universal_Robots_ROS2_GZ_Simulation/ur_simulation_gz) by extensions ['ros']
+[0.642s] Level 1:colcon.colcon_core.package_identification:_identify(Universal_Robots_ROS2_GZ_Simulation/ur_simulation_gz) by extension 'ros'
+[0.646s] DEBUG:colcon.colcon_core.package_identification:Package 'Universal_Robots_ROS2_GZ_Simulation/ur_simulation_gz' with type 'ros.ament_cmake' and name 'ur_simulation_gz'
+[0.646s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.646s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.646s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.647s] Level 1:colcon.colcon_core.package_identification:_identify(drink_memory) by extensions ['ignore', 'ignore_ament_install']
+[0.647s] Level 1:colcon.colcon_core.package_identification:_identify(drink_memory) by extension 'ignore'
+[0.647s] Level 1:colcon.colcon_core.package_identification:_identify(drink_memory) by extension 'ignore_ament_install'
+[0.647s] Level 1:colcon.colcon_core.package_identification:_identify(drink_memory) by extensions ['colcon_pkg']
+[0.647s] Level 1:colcon.colcon_core.package_identification:_identify(drink_memory) by extension 'colcon_pkg'
+[0.647s] Level 1:colcon.colcon_core.package_identification:_identify(drink_memory) by extensions ['colcon_meta']
+[0.647s] Level 1:colcon.colcon_core.package_identification:_identify(drink_memory) by extension 'colcon_meta'
+[0.647s] Level 1:colcon.colcon_core.package_identification:_identify(drink_memory) by extensions ['ros']
+[0.647s] Level 1:colcon.colcon_core.package_identification:_identify(drink_memory) by extension 'ros'
+[0.649s] DEBUG:colcon.colcon_core.package_identification:Package 'drink_memory' with type 'ros.ament_python' and name 'drink_memory'
+[0.650s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.650s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.650s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.650s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.650s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.650s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.651s] Level 1:colcon.colcon_core.package_identification:_identify(memory_decision) by extensions ['ignore', 'ignore_ament_install']
+[0.651s] Level 1:colcon.colcon_core.package_identification:_identify(memory_decision) by extension 'ignore'
+[0.651s] Level 1:colcon.colcon_core.package_identification:_identify(memory_decision) by extension 'ignore_ament_install'
+[0.651s] Level 1:colcon.colcon_core.package_identification:_identify(memory_decision) by extensions ['colcon_pkg']
+[0.651s] Level 1:colcon.colcon_core.package_identification:_identify(memory_decision) by extension 'colcon_pkg'
+[0.651s] Level 1:colcon.colcon_core.package_identification:_identify(memory_decision) by extensions ['colcon_meta']
+[0.651s] Level 1:colcon.colcon_core.package_identification:_identify(memory_decision) by extension 'colcon_meta'
+[0.651s] Level 1:colcon.colcon_core.package_identification:_identify(memory_decision) by extensions ['ros']
+[0.651s] Level 1:colcon.colcon_core.package_identification:_identify(memory_decision) by extension 'ros'
+[0.652s] DEBUG:colcon.colcon_core.package_identification:Package 'memory_decision' with type 'ros.ament_cmake' and name 'memory_decision'
+[0.653s] Level 1:colcon.colcon_core.package_identification:_identify(ur3_cartesian_motion) by extensions ['ignore', 'ignore_ament_install']
+[0.653s] Level 1:colcon.colcon_core.package_identification:_identify(ur3_cartesian_motion) by extension 'ignore'
+[0.653s] Level 1:colcon.colcon_core.package_identification:_identify(ur3_cartesian_motion) by extension 'ignore_ament_install'
+[0.653s] Level 1:colcon.colcon_core.package_identification:_identify(ur3_cartesian_motion) by extensions ['colcon_pkg']
+[0.653s] Level 1:colcon.colcon_core.package_identification:_identify(ur3_cartesian_motion) by extension 'colcon_pkg'
+[0.653s] Level 1:colcon.colcon_core.package_identification:_identify(ur3_cartesian_motion) by extensions ['colcon_meta']
+[0.653s] Level 1:colcon.colcon_core.package_identification:_identify(ur3_cartesian_motion) by extension 'colcon_meta'
+[0.653s] Level 1:colcon.colcon_core.package_identification:_identify(ur3_cartesian_motion) by extensions ['ros']
+[0.653s] Level 1:colcon.colcon_core.package_identification:_identify(ur3_cartesian_motion) by extension 'ros'
+[0.654s] DEBUG:colcon.colcon_core.package_identification:Package 'ur3_cartesian_motion' with type 'ros.ament_cmake' and name 'ur3_cartesian_motion'
+[0.654s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.654s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.654s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.654s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.654s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.705s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'drink_memory' in 'drink_memory'
+[0.705s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'memory_decision' in 'memory_decision'
+[0.705s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'ur_simulation_gz' in 'Universal_Robots_ROS2_GZ_Simulation/ur_simulation_gz'
+[0.705s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.705s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.709s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 3 installed packages in /home/parallels/ros2_ws/install
+[0.711s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 333 installed packages in /opt/ros/humble
+[0.712s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.764s] Level 5:colcon.colcon_core.verb:set package 'ur3_cartesian_motion' build argument 'cmake_args' from command line to 'None'
+[0.765s] Level 5:colcon.colcon_core.verb:set package 'ur3_cartesian_motion' build argument 'cmake_target' from command line to 'None'
+[0.765s] Level 5:colcon.colcon_core.verb:set package 'ur3_cartesian_motion' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.765s] Level 5:colcon.colcon_core.verb:set package 'ur3_cartesian_motion' build argument 'cmake_clean_cache' from command line to 'False'
+[0.765s] Level 5:colcon.colcon_core.verb:set package 'ur3_cartesian_motion' build argument 'cmake_clean_first' from command line to 'False'
+[0.765s] Level 5:colcon.colcon_core.verb:set package 'ur3_cartesian_motion' build argument 'cmake_force_configure' from command line to 'False'
+[0.765s] Level 5:colcon.colcon_core.verb:set package 'ur3_cartesian_motion' build argument 'ament_cmake_args' from command line to 'None'
+[0.765s] Level 5:colcon.colcon_core.verb:set package 'ur3_cartesian_motion' build argument 'catkin_cmake_args' from command line to 'None'
+[0.765s] Level 5:colcon.colcon_core.verb:set package 'ur3_cartesian_motion' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.765s] DEBUG:colcon.colcon_core.verb:Building package 'ur3_cartesian_motion' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/parallels/ros2_ws/src/build/ur3_cartesian_motion', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/parallels/ros2_ws/src/install/ur3_cartesian_motion', 'merge_install': False, 'path': '/home/parallels/ros2_ws/src/ur3_cartesian_motion', 'symlink_install': False, 'test_result_base': None}
+[0.765s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.766s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.767s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/parallels/ros2_ws/src/ur3_cartesian_motion' with build type 'ament_cmake'
+[0.767s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/parallels/ros2_ws/src/ur3_cartesian_motion'
+[0.772s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.773s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.773s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.801s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/parallels/ros2_ws/src/build/ur3_cartesian_motion': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/parallels/ros2_ws/install/drink_memory:/opt/ros/humble /usr/bin/cmake --build /home/parallels/ros2_ws/src/build/ur3_cartesian_motion -- -j2 -l2
+[1.120s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/parallels/ros2_ws/src/build/ur3_cartesian_motion' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/parallels/ros2_ws/install/drink_memory:/opt/ros/humble /usr/bin/cmake --build /home/parallels/ros2_ws/src/build/ur3_cartesian_motion -- -j2 -l2
+[1.139s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/parallels/ros2_ws/src/build/ur3_cartesian_motion': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/parallels/ros2_ws/install/drink_memory:/opt/ros/humble /usr/bin/cmake --install /home/parallels/ros2_ws/src/build/ur3_cartesian_motion
+[1.153s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(ur3_cartesian_motion)
+[1.155s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/parallels/ros2_ws/src/build/ur3_cartesian_motion' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/parallels/ros2_ws/install/drink_memory:/opt/ros/humble /usr/bin/cmake --install /home/parallels/ros2_ws/src/build/ur3_cartesian_motion
+[1.161s] Level 1:colcon.colcon_core.environment:checking '/home/parallels/ros2_ws/src/install/ur3_cartesian_motion' for CMake module files
+[1.162s] Level 1:colcon.colcon_core.environment:checking '/home/parallels/ros2_ws/src/install/ur3_cartesian_motion' for CMake config files
+[1.163s] Level 1:colcon.colcon_core.shell:create_environment_hook('ur3_cartesian_motion', 'cmake_prefix_path')
+[1.164s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ur3_cartesian_motion/hook/cmake_prefix_path.ps1'
+[1.165s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ur3_cartesian_motion/hook/cmake_prefix_path.dsv'
+[1.165s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ur3_cartesian_motion/hook/cmake_prefix_path.sh'
+[1.166s] Level 1:colcon.colcon_core.environment:checking '/home/parallels/ros2_ws/src/install/ur3_cartesian_motion/lib'
+[1.167s] Level 1:colcon.colcon_core.environment:checking '/home/parallels/ros2_ws/src/install/ur3_cartesian_motion/bin'
+[1.167s] Level 1:colcon.colcon_core.environment:checking '/home/parallels/ros2_ws/src/install/ur3_cartesian_motion/lib/pkgconfig/ur3_cartesian_motion.pc'
+[1.167s] Level 1:colcon.colcon_core.environment:checking '/home/parallels/ros2_ws/src/install/ur3_cartesian_motion/lib/python3.10/site-packages'
+[1.167s] Level 1:colcon.colcon_core.environment:checking '/home/parallels/ros2_ws/src/install/ur3_cartesian_motion/bin'
+[1.167s] INFO:colcon.colcon_core.shell:Creating package script '/home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ur3_cartesian_motion/package.ps1'
+[1.168s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ur3_cartesian_motion/package.dsv'
+[1.169s] INFO:colcon.colcon_core.shell:Creating package script '/home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ur3_cartesian_motion/package.sh'
+[1.170s] INFO:colcon.colcon_core.shell:Creating package script '/home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ur3_cartesian_motion/package.bash'
+[1.171s] INFO:colcon.colcon_core.shell:Creating package script '/home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ur3_cartesian_motion/package.zsh'
+[1.171s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/colcon-core/packages/ur3_cartesian_motion)
+[1.172s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(ur3_cartesian_motion)
+[1.172s] Level 1:colcon.colcon_core.environment:checking '/home/parallels/ros2_ws/src/install/ur3_cartesian_motion' for CMake module files
+[1.172s] Level 1:colcon.colcon_core.environment:checking '/home/parallels/ros2_ws/src/install/ur3_cartesian_motion' for CMake config files
+[1.173s] Level 1:colcon.colcon_core.shell:create_environment_hook('ur3_cartesian_motion', 'cmake_prefix_path')
+[1.173s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ur3_cartesian_motion/hook/cmake_prefix_path.ps1'
+[1.174s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ur3_cartesian_motion/hook/cmake_prefix_path.dsv'
+[1.174s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ur3_cartesian_motion/hook/cmake_prefix_path.sh'
+[1.174s] Level 1:colcon.colcon_core.environment:checking '/home/parallels/ros2_ws/src/install/ur3_cartesian_motion/lib'
+[1.174s] Level 1:colcon.colcon_core.environment:checking '/home/parallels/ros2_ws/src/install/ur3_cartesian_motion/bin'
+[1.174s] Level 1:colcon.colcon_core.environment:checking '/home/parallels/ros2_ws/src/install/ur3_cartesian_motion/lib/pkgconfig/ur3_cartesian_motion.pc'
+[1.174s] Level 1:colcon.colcon_core.environment:checking '/home/parallels/ros2_ws/src/install/ur3_cartesian_motion/lib/python3.10/site-packages'
+[1.175s] Level 1:colcon.colcon_core.environment:checking '/home/parallels/ros2_ws/src/install/ur3_cartesian_motion/bin'
+[1.175s] INFO:colcon.colcon_core.shell:Creating package script '/home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ur3_cartesian_motion/package.ps1'
+[1.175s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ur3_cartesian_motion/package.dsv'
+[1.176s] INFO:colcon.colcon_core.shell:Creating package script '/home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ur3_cartesian_motion/package.sh'
+[1.176s] INFO:colcon.colcon_core.shell:Creating package script '/home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ur3_cartesian_motion/package.bash'
+[1.176s] INFO:colcon.colcon_core.shell:Creating package script '/home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ur3_cartesian_motion/package.zsh'
+[1.176s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/colcon-core/packages/ur3_cartesian_motion)
+[1.177s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[1.177s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[1.177s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[1.178s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[1.188s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[1.188s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[1.188s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[1.230s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[1.230s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/parallels/ros2_ws/src/install/local_setup.ps1'
+[1.232s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/parallels/ros2_ws/src/install/_local_setup_util_ps1.py'
+[1.233s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/parallels/ros2_ws/src/install/setup.ps1'
+[1.236s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/parallels/ros2_ws/src/install/local_setup.sh'
+[1.237s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/parallels/ros2_ws/src/install/_local_setup_util_sh.py'
+[1.239s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/parallels/ros2_ws/src/install/setup.sh'
+[1.242s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/parallels/ros2_ws/src/install/local_setup.bash'
+[1.244s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/parallels/ros2_ws/src/install/setup.bash'
+[1.247s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/parallels/ros2_ws/src/install/local_setup.zsh'
+[1.250s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/parallels/ros2_ws/src/install/setup.zsh'

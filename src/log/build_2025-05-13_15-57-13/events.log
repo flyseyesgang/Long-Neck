@@ -1,0 +1,320 @@
+[0.000000] (-) TimerEvent: {}
+[0.000511] (-) JobUnselected: {'identifier': 'drink_memory'}
+[0.000547] (-) JobUnselected: {'identifier': 'ur_simulation_gz'}
+[0.000588] (ur3_cartesian_motion) JobQueued: {'identifier': 'ur3_cartesian_motion', 'dependencies': OrderedDict()}
+[0.000626] (ur3_cartesian_motion) JobStarted: {'identifier': 'ur3_cartesian_motion'}
+[0.018386] (ur3_cartesian_motion) JobProgress: {'identifier': 'ur3_cartesian_motion', 'progress': 'cmake'}
+[0.019574] (ur3_cartesian_motion) JobProgress: {'identifier': 'ur3_cartesian_motion', 'progress': 'build'}
+[0.020304] (ur3_cartesian_motion) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/parallels/ros2_ws/src/build/ur3_cartesian_motion', '--', '-j2', '-l2'], 'cwd': '/home/parallels/ros2_ws/src/build/ur3_cartesian_motion', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'parallels'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/parallels'), ('OLDPWD', '/home/parallels'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('SYSTEMD_EXEC_PID', '1938892'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/parallels/ros2_ws/install:/home/parallels/ros2_ws/src/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'parallels'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'parallels'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/parallels/.local/bin:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/ubuntu-linux-22-04-desktop:@/tmp/.ICE-unix/2340,unix/ubuntu-linux-22-04-desktop:/tmp/.ICE-unix/2340'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/e8b13eb5_bd8b_4f12_b45c_1ef6066d4764'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.OQN042'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.759'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/parallels/ros2_ws/src/install/ur3_cartesian_motion:/home/parallels/ros2_ws/install/ur3_cartesian_motion:/home/parallels/ros2_ws/install/drink_memory:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/parallels/ros2_ws/src/build/ur3_cartesian_motion'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/parallels/ros2_ws/install/drink_memory/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/parallels/ros2_ws/src/install/ur3_cartesian_motion:/home/parallels/ros2_ws/install/ur3_cartesian_motion:/home/parallels/ros2_ws/install/drink_memory:/opt/ros/humble')]), 'shell': False}
+[0.099798] (-) TimerEvent: {}
+[0.183891] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.199917] (-) TimerEvent: {}
+[0.300531] (-) TimerEvent: {}
+[0.360889] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Found rclcpp: 16.0.11 (/opt/ros/humble/share/rclcpp/cmake)\n'}
+[0.400647] (-) TimerEvent: {}
+[0.408227] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[0.412162] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[0.420446] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[0.434262] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.450871] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.500809] (-) TimerEvent: {}
+[0.501799] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[0.505260] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[0.601203] (-) TimerEvent: {}
+[0.625772] (ur3_cartesian_motion) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[0.695194] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Found geometry_msgs: 4.2.4 (/opt/ros/humble/share/geometry_msgs/cmake)\n'}
+[0.701294] (-) TimerEvent: {}
+[0.711421] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Found tf2_geometry_msgs: 0.25.12 (/opt/ros/humble/share/tf2_geometry_msgs/cmake)\n'}
+[0.716104] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)\n'}
+[0.717713] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Ensuring Eigen3 include directory is part of orocos-kdl CMake target\n'}
+[0.801415] (-) TimerEvent: {}
+[0.837993] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Found moveit_core: 2.5.8 (/opt/ros/humble/share/moveit_core/cmake)\n'}
+[0.861606] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Found Boost: /usr/lib/aarch64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: chrono date_time filesystem iostreams program_options regex serialization system thread \n'}
+[0.891664] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Found parameter_traits: 0.4.0 (/opt/ros/humble/share/parameter_traits/cmake)\n'}
+[0.901698] (-) TimerEvent: {}
+[0.902228] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Found rclcpp_lifecycle: 16.0.11 (/opt/ros/humble/share/rclcpp_lifecycle/cmake)\n'}
+[0.930915] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Found Boost: /usr/lib/aarch64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: filesystem \n'}
+[0.966122] (ur3_cartesian_motion) StdoutLine: {'line': b'-- library: /usr/lib/aarch64-linux-gnu/libcurl.so\n'}
+[1.002007] (-) TimerEvent: {}
+[1.103057] (-) TimerEvent: {}
+[1.196505] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Found moveit_ros_planning_interface: 2.5.8 (/opt/ros/humble/share/moveit_ros_planning_interface/cmake)\n'}
+[1.202397] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Found Boost: /usr/lib/aarch64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: date_time filesystem program_options system thread \n'}
+[1.203288] (-) TimerEvent: {}
+[1.216667] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Found Boost: /usr/lib/aarch64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: system filesystem date_time program_options thread chrono \n'}
+[1.253369] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Found Boost: /usr/lib/aarch64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: thread system filesystem regex date_time program_options \n'}
+[1.277845] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Found Boost: /usr/lib/aarch64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: system filesystem date_time program_options thread \n'}
+[1.305346] (-) TimerEvent: {}
+[1.401761] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Configuring done\n'}
+[1.405783] (-) TimerEvent: {}
+[1.453965] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Generating done\n'}
+[1.463581] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Build files have been written to: /home/parallels/ros2_ws/src/build/ur3_cartesian_motion\n'}
+[1.500270] (ur3_cartesian_motion) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target ur3_cartesian_motion_node\x1b[0m\n'}
+[1.506091] (-) TimerEvent: {}
+[1.552843] (ur3_cartesian_motion) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/ur3_cartesian_motion_node.dir/src/ur3_cartesian_motion_node.cpp.o\x1b[0m\n'}
+[1.606240] (-) TimerEvent: {}
+[1.706805] (-) TimerEvent: {}
+[1.807370] (-) TimerEvent: {}
+[1.907939] (-) TimerEvent: {}
+[2.008435] (-) TimerEvent: {}
+[2.109058] (-) TimerEvent: {}
+[2.209419] (-) TimerEvent: {}
+[2.315123] (-) TimerEvent: {}
+[2.416063] (-) TimerEvent: {}
+[2.517048] (-) TimerEvent: {}
+[2.617442] (-) TimerEvent: {}
+[2.718356] (-) TimerEvent: {}
+[2.818967] (-) TimerEvent: {}
+[2.919893] (-) TimerEvent: {}
+[3.024366] (-) TimerEvent: {}
+[3.124856] (-) TimerEvent: {}
+[3.226399] (-) TimerEvent: {}
+[3.326850] (-) TimerEvent: {}
+[3.430743] (-) TimerEvent: {}
+[3.531362] (-) TimerEvent: {}
+[3.632092] (-) TimerEvent: {}
+[3.732993] (-) TimerEvent: {}
+[3.833961] (-) TimerEvent: {}
+[3.934355] (-) TimerEvent: {}
+[4.034743] (-) TimerEvent: {}
+[4.135730] (-) TimerEvent: {}
+[4.236288] (-) TimerEvent: {}
+[4.337317] (-) TimerEvent: {}
+[4.442378] (-) TimerEvent: {}
+[4.543502] (-) TimerEvent: {}
+[4.644174] (-) TimerEvent: {}
+[4.745881] (-) TimerEvent: {}
+[4.850034] (-) TimerEvent: {}
+[4.950613] (-) TimerEvent: {}
+[5.051151] (-) TimerEvent: {}
+[5.151684] (-) TimerEvent: {}
+[5.252204] (-) TimerEvent: {}
+[5.354604] (-) TimerEvent: {}
+[5.455641] (-) TimerEvent: {}
+[5.562120] (-) TimerEvent: {}
+[5.663453] (-) TimerEvent: {}
+[5.763872] (-) TimerEvent: {}
+[5.864495] (-) TimerEvent: {}
+[5.965508] (-) TimerEvent: {}
+[6.066339] (-) TimerEvent: {}
+[6.168692] (-) TimerEvent: {}
+[6.271713] (-) TimerEvent: {}
+[6.372561] (-) TimerEvent: {}
+[6.473565] (-) TimerEvent: {}
+[6.574164] (-) TimerEvent: {}
+[6.674650] (-) TimerEvent: {}
+[6.775350] (-) TimerEvent: {}
+[6.877625] (-) TimerEvent: {}
+[6.978101] (-) TimerEvent: {}
+[7.078883] (-) TimerEvent: {}
+[7.179803] (-) TimerEvent: {}
+[7.280305] (-) TimerEvent: {}
+[7.380888] (-) TimerEvent: {}
+[7.482183] (-) TimerEvent: {}
+[7.583245] (-) TimerEvent: {}
+[7.683777] (-) TimerEvent: {}
+[7.784459] (-) TimerEvent: {}
+[7.885172] (-) TimerEvent: {}
+[7.985773] (-) TimerEvent: {}
+[8.086611] (-) TimerEvent: {}
+[8.187775] (-) TimerEvent: {}
+[8.288642] (-) TimerEvent: {}
+[8.390415] (-) TimerEvent: {}
+[8.491496] (-) TimerEvent: {}
+[8.592829] (-) TimerEvent: {}
+[8.693258] (-) TimerEvent: {}
+[8.793879] (-) TimerEvent: {}
+[8.895863] (-) TimerEvent: {}
+[8.999006] (-) TimerEvent: {}
+[9.104006] (-) TimerEvent: {}
+[9.204833] (-) TimerEvent: {}
+[9.305428] (-) TimerEvent: {}
+[9.406691] (-) TimerEvent: {}
+[9.507775] (-) TimerEvent: {}
+[9.608285] (-) TimerEvent: {}
+[9.708720] (-) TimerEvent: {}
+[9.809404] (-) TimerEvent: {}
+[9.910671] (-) TimerEvent: {}
+[10.012331] (-) TimerEvent: {}
+[10.113148] (-) TimerEvent: {}
+[10.213471] (-) TimerEvent: {}
+[10.314277] (-) TimerEvent: {}
+[10.415753] (-) TimerEvent: {}
+[10.516110] (-) TimerEvent: {}
+[10.616676] (-) TimerEvent: {}
+[10.718056] (-) TimerEvent: {}
+[10.819332] (-) TimerEvent: {}
+[10.920127] (-) TimerEvent: {}
+[11.020870] (-) TimerEvent: {}
+[11.121834] (-) TimerEvent: {}
+[11.222390] (-) TimerEvent: {}
+[11.325339] (-) TimerEvent: {}
+[11.425777] (-) TimerEvent: {}
+[11.526244] (-) TimerEvent: {}
+[11.626824] (-) TimerEvent: {}
+[11.727395] (-) TimerEvent: {}
+[11.828074] (-) TimerEvent: {}
+[11.929861] (-) TimerEvent: {}
+[12.031528] (-) TimerEvent: {}
+[12.132552] (-) TimerEvent: {}
+[12.233456] (-) TimerEvent: {}
+[12.334126] (-) TimerEvent: {}
+[12.435805] (-) TimerEvent: {}
+[12.536396] (-) TimerEvent: {}
+[12.636899] (-) TimerEvent: {}
+[12.737340] (-) TimerEvent: {}
+[12.839535] (-) TimerEvent: {}
+[12.940263] (-) TimerEvent: {}
+[13.040878] (-) TimerEvent: {}
+[13.141695] (-) TimerEvent: {}
+[13.242839] (-) TimerEvent: {}
+[13.344989] (-) TimerEvent: {}
+[13.449916] (-) TimerEvent: {}
+[13.550469] (-) TimerEvent: {}
+[13.655638] (-) TimerEvent: {}
+[13.759152] (-) TimerEvent: {}
+[13.859902] (-) TimerEvent: {}
+[13.961115] (-) TimerEvent: {}
+[14.062664] (-) TimerEvent: {}
+[14.163891] (-) TimerEvent: {}
+[14.264948] (-) TimerEvent: {}
+[14.365286] (-) TimerEvent: {}
+[14.467952] (-) TimerEvent: {}
+[14.568326] (-) TimerEvent: {}
+[14.668810] (-) TimerEvent: {}
+[14.769450] (-) TimerEvent: {}
+[14.870118] (-) TimerEvent: {}
+[14.970620] (-) TimerEvent: {}
+[15.071561] (-) TimerEvent: {}
+[15.174665] (-) TimerEvent: {}
+[15.277245] (-) TimerEvent: {}
+[15.377891] (-) TimerEvent: {}
+[15.478697] (-) TimerEvent: {}
+[15.579322] (-) TimerEvent: {}
+[15.682529] (-) TimerEvent: {}
+[15.783144] (-) TimerEvent: {}
+[15.886217] (-) TimerEvent: {}
+[15.986878] (-) TimerEvent: {}
+[16.087405] (-) TimerEvent: {}
+[16.188362] (-) TimerEvent: {}
+[16.291020] (-) TimerEvent: {}
+[16.392274] (-) TimerEvent: {}
+[16.492797] (-) TimerEvent: {}
+[16.593698] (-) TimerEvent: {}
+[16.694338] (-) TimerEvent: {}
+[16.795148] (-) TimerEvent: {}
+[16.895666] (-) TimerEvent: {}
+[16.998634] (-) TimerEvent: {}
+[17.100172] (-) TimerEvent: {}
+[17.201152] (-) TimerEvent: {}
+[17.301779] (-) TimerEvent: {}
+[17.403869] (-) TimerEvent: {}
+[17.504566] (-) TimerEvent: {}
+[17.606104] (-) TimerEvent: {}
+[17.707250] (-) TimerEvent: {}
+[17.808294] (-) TimerEvent: {}
+[17.908866] (-) TimerEvent: {}
+[18.009545] (-) TimerEvent: {}
+[18.110174] (-) TimerEvent: {}
+[18.211427] (-) TimerEvent: {}
+[18.313197] (-) TimerEvent: {}
+[18.413807] (-) TimerEvent: {}
+[18.514632] (-) TimerEvent: {}
+[18.615768] (-) TimerEvent: {}
+[18.716515] (-) TimerEvent: {}
+[18.817444] (-) TimerEvent: {}
+[18.921489] (-) TimerEvent: {}
+[19.022471] (-) TimerEvent: {}
+[19.122973] (-) TimerEvent: {}
+[19.224076] (-) TimerEvent: {}
+[19.324810] (-) TimerEvent: {}
+[19.425808] (-) TimerEvent: {}
+[19.527223] (-) TimerEvent: {}
+[19.628661] (-) TimerEvent: {}
+[19.729191] (-) TimerEvent: {}
+[19.830407] (-) TimerEvent: {}
+[19.935045] (-) TimerEvent: {}
+[20.039348] (-) TimerEvent: {}
+[20.142348] (-) TimerEvent: {}
+[20.243165] (-) TimerEvent: {}
+[20.344141] (-) TimerEvent: {}
+[20.444686] (-) TimerEvent: {}
+[20.545570] (-) TimerEvent: {}
+[20.647298] (-) TimerEvent: {}
+[20.748690] (-) TimerEvent: {}
+[20.849159] (-) TimerEvent: {}
+[20.949736] (-) TimerEvent: {}
+[21.050204] (-) TimerEvent: {}
+[21.150774] (-) TimerEvent: {}
+[21.251181] (-) TimerEvent: {}
+[21.352206] (-) TimerEvent: {}
+[21.452722] (-) TimerEvent: {}
+[21.553293] (-) TimerEvent: {}
+[21.655439] (-) TimerEvent: {}
+[21.755705] (-) TimerEvent: {}
+[21.857680] (-) TimerEvent: {}
+[21.958282] (-) TimerEvent: {}
+[22.058829] (-) TimerEvent: {}
+[22.159952] (-) TimerEvent: {}
+[22.261429] (-) TimerEvent: {}
+[22.362135] (-) TimerEvent: {}
+[22.463193] (-) TimerEvent: {}
+[22.564961] (-) TimerEvent: {}
+[22.666099] (-) TimerEvent: {}
+[22.766427] (-) TimerEvent: {}
+[22.866840] (-) TimerEvent: {}
+[22.967713] (-) TimerEvent: {}
+[23.068091] (-) TimerEvent: {}
+[23.170186] (-) TimerEvent: {}
+[23.271271] (-) TimerEvent: {}
+[23.373322] (-) TimerEvent: {}
+[23.473872] (-) TimerEvent: {}
+[23.574388] (-) TimerEvent: {}
+[23.676397] (-) TimerEvent: {}
+[23.777060] (-) TimerEvent: {}
+[23.879720] (-) TimerEvent: {}
+[23.980014] (-) TimerEvent: {}
+[24.081615] (-) TimerEvent: {}
+[24.182612] (-) TimerEvent: {}
+[24.285175] (-) TimerEvent: {}
+[24.385968] (-) TimerEvent: {}
+[24.486951] (-) TimerEvent: {}
+[24.591070] (ur3_cartesian_motion) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable ur3_cartesian_motion_node\x1b[0m\n'}
+[24.622323] (-) TimerEvent: {}
+[24.722995] (-) TimerEvent: {}
+[24.824641] (-) TimerEvent: {}
+[24.925961] (-) TimerEvent: {}
+[25.026894] (-) TimerEvent: {}
+[25.127697] (-) TimerEvent: {}
+[25.228208] (-) TimerEvent: {}
+[25.328590] (-) TimerEvent: {}
+[25.429389] (-) TimerEvent: {}
+[25.529924] (-) TimerEvent: {}
+[25.615164] (ur3_cartesian_motion) StdoutLine: {'line': b'[100%] Built target ur3_cartesian_motion_node\n'}
+[25.630046] (-) TimerEvent: {}
+[25.718985] (ur3_cartesian_motion) CommandEnded: {'returncode': 0}
+[25.780985] (-) TimerEvent: {}
+[25.805412] (ur3_cartesian_motion) JobProgress: {'identifier': 'ur3_cartesian_motion', 'progress': 'install'}
+[25.839717] (ur3_cartesian_motion) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/parallels/ros2_ws/src/build/ur3_cartesian_motion'], 'cwd': '/home/parallels/ros2_ws/src/build/ur3_cartesian_motion', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'parallels'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/parallels'), ('OLDPWD', '/home/parallels'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('SYSTEMD_EXEC_PID', '1938892'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/parallels/ros2_ws/install:/home/parallels/ros2_ws/src/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'parallels'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'parallels'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/parallels/.local/bin:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/ubuntu-linux-22-04-desktop:@/tmp/.ICE-unix/2340,unix/ubuntu-linux-22-04-desktop:/tmp/.ICE-unix/2340'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/e8b13eb5_bd8b_4f12_b45c_1ef6066d4764'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.OQN042'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.759'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/parallels/ros2_ws/src/install/ur3_cartesian_motion:/home/parallels/ros2_ws/install/ur3_cartesian_motion:/home/parallels/ros2_ws/install/drink_memory:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/parallels/ros2_ws/src/build/ur3_cartesian_motion'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/parallels/ros2_ws/install/drink_memory/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/parallels/ros2_ws/src/install/ur3_cartesian_motion:/home/parallels/ros2_ws/install/ur3_cartesian_motion:/home/parallels/ros2_ws/install/drink_memory:/opt/ros/humble')]), 'shell': False}
+[25.855527] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[25.856384] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Installing: /home/parallels/ros2_ws/src/install/ur3_cartesian_motion/lib/ur3_cartesian_motion/ur3_cartesian_motion_node\n'}
+[25.860423] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Set runtime path of "/home/parallels/ros2_ws/src/install/ur3_cartesian_motion/lib/ur3_cartesian_motion/ur3_cartesian_motion_node" to ""\n'}
+[25.862349] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Up-to-date: /home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ament_index/resource_index/package_run_dependencies/ur3_cartesian_motion\n'}
+[25.863010] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Installing: /home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ament_index/resource_index/parent_prefix_path/ur3_cartesian_motion\n'}
+[25.864775] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Up-to-date: /home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ur3_cartesian_motion/environment/ament_prefix_path.sh\n'}
+[25.864906] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Installing: /home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ur3_cartesian_motion/environment/ament_prefix_path.dsv\n'}
+[25.865471] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Up-to-date: /home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ur3_cartesian_motion/environment/path.sh\n'}
+[25.865580] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Installing: /home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ur3_cartesian_motion/environment/path.dsv\n'}
+[25.865763] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Up-to-date: /home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ur3_cartesian_motion/local_setup.bash\n'}
+[25.865886] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Up-to-date: /home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ur3_cartesian_motion/local_setup.sh\n'}
+[25.865981] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Up-to-date: /home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ur3_cartesian_motion/local_setup.zsh\n'}
+[25.866073] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Installing: /home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ur3_cartesian_motion/local_setup.dsv\n'}
+[25.866200] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Installing: /home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ur3_cartesian_motion/package.dsv\n'}
+[25.866756] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Up-to-date: /home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ament_index/resource_index/packages/ur3_cartesian_motion\n'}
+[25.867038] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Up-to-date: /home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ur3_cartesian_motion/cmake/ur3_cartesian_motionConfig.cmake\n'}
+[25.867121] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Up-to-date: /home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ur3_cartesian_motion/cmake/ur3_cartesian_motionConfig-version.cmake\n'}
+[25.867824] (ur3_cartesian_motion) StdoutLine: {'line': b'-- Up-to-date: /home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ur3_cartesian_motion/package.xml\n'}
+[25.874485] (ur3_cartesian_motion) CommandEnded: {'returncode': 0}
+[25.886297] (-) TimerEvent: {}
+[25.994685] (-) TimerEvent: {}
+[26.012724] (ur3_cartesian_motion) JobEnded: {'identifier': 'ur3_cartesian_motion', 'rc': 0}
+[26.016975] (-) EventReactorShutdown: {}

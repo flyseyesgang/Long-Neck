@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="(empty)"
+	BuildStamp="20250522-0417-Experimental"
+	Name="ubuntu-linux-22-04-desktop"
+	Generator="ctest-3.22.1"
+	CompilerName="/usr/bin/c++"
+	CompilerVersion="11.4.0"
+	OSName="Linux"
+	Hostname="ubuntu-linux-22-04-desktop"
+	OSRelease="5.15.0-140-generic"
+	OSVersion="#150-Ubuntu SMP Sat Apr 12 06:17:19 UTC 2025"
+	OSPlatform="aarch64"
+	Is64Bits="1"
+	VendorString=""
+	VendorID="Unknown Manufacturer"
+	FamilyID="8"
+	ModelID="0"
+	ProcessorCacheSize="0"
+	NumberOfLogicalCPU="3"
+	NumberOfPhysicalCPU="1"
+	TotalVirtualMemory="2047"
+	TotalPhysicalMemory="1966"
+	LogicalProcessorsPerPhysical="3"
+	ProcessorClockFrequency="0"
+	>
+	<Testing>
+		<StartDateTime>May 22 14:17 AEST</StartDateTime>
+		<StartTestTime>1747887452</StartTestTime>
+		<TestList/>
+		<EndDateTime>May 22 14:17 AEST</EndDateTime>
+		<EndTestTime>1747887452</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Testing>
+</Site>

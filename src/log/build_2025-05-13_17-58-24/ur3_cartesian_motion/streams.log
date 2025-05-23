@@ -1,0 +1,54 @@
+[0.022s] Invoking command in '/home/parallels/ros2_ws/src/build/ur3_cartesian_motion': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/parallels/ros2_ws/install/drink_memory:/opt/ros/humble /usr/bin/cmake --build /home/parallels/ros2_ws/src/build/ur3_cartesian_motion -- -j2 -l2
+[0.224s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.383s] -- Found rclcpp: 16.0.11 (/opt/ros/humble/share/rclcpp/cmake)
+[0.434s] -- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.439s] -- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.447s] -- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.463s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.481s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.529s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.532s] -- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.675s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.748s] -- Found geometry_msgs: 4.2.4 (/opt/ros/humble/share/geometry_msgs/cmake)
+[0.766s] -- Found tf2_geometry_msgs: 0.25.12 (/opt/ros/humble/share/tf2_geometry_msgs/cmake)
+[0.771s] -- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)
+[0.773s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[0.896s] -- Found moveit_core: 2.5.8 (/opt/ros/humble/share/moveit_core/cmake)
+[0.921s] -- Found Boost: /usr/lib/aarch64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: chrono date_time filesystem iostreams program_options regex serialization system thread 
+[0.954s] -- Found parameter_traits: 0.4.0 (/opt/ros/humble/share/parameter_traits/cmake)
+[0.966s] -- Found rclcpp_lifecycle: 16.0.11 (/opt/ros/humble/share/rclcpp_lifecycle/cmake)
+[0.996s] -- Found Boost: /usr/lib/aarch64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: filesystem 
+[1.036s] -- library: /usr/lib/aarch64-linux-gnu/libcurl.so
+[1.278s] -- Found moveit_ros_planning_interface: 2.5.8 (/opt/ros/humble/share/moveit_ros_planning_interface/cmake)
+[1.284s] -- Found Boost: /usr/lib/aarch64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: date_time filesystem program_options system thread 
+[1.300s] -- Found Boost: /usr/lib/aarch64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: system filesystem date_time program_options thread chrono 
+[1.338s] -- Found Boost: /usr/lib/aarch64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: thread system filesystem regex date_time program_options 
+[1.364s] -- Found Boost: /usr/lib/aarch64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: system filesystem date_time program_options thread 
+[1.467s] -- Configuring done
+[1.521s] -- Generating done
+[1.533s] -- Build files have been written to: /home/parallels/ros2_ws/src/build/ur3_cartesian_motion
+[1.566s] [35m[1mConsolidate compiler generated dependencies of target ur3_cartesian_motion_node[0m
+[1.684s] [ 50%] [32mBuilding CXX object CMakeFiles/ur3_cartesian_motion_node.dir/src/ur3_cartesian_motion_node.cpp.o[0m
+[638.585s] [100%] [32m[1mLinking CXX executable ur3_cartesian_motion_node[0m
+[639.631s] [100%] Built target ur3_cartesian_motion_node
+[639.818s] Invoked command in '/home/parallels/ros2_ws/src/build/ur3_cartesian_motion' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/parallels/ros2_ws/install/drink_memory:/opt/ros/humble /usr/bin/cmake --build /home/parallels/ros2_ws/src/build/ur3_cartesian_motion -- -j2 -l2
+[639.955s] Invoking command in '/home/parallels/ros2_ws/src/build/ur3_cartesian_motion': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/parallels/ros2_ws/install/drink_memory:/opt/ros/humble /usr/bin/cmake --install /home/parallels/ros2_ws/src/build/ur3_cartesian_motion
+[639.983s] -- Install configuration: ""
+[639.984s] -- Installing: /home/parallels/ros2_ws/src/install/ur3_cartesian_motion/lib/ur3_cartesian_motion/ur3_cartesian_motion_node
+[639.992s] -- Set runtime path of "/home/parallels/ros2_ws/src/install/ur3_cartesian_motion/lib/ur3_cartesian_motion/ur3_cartesian_motion_node" to ""
+[639.997s] -- Up-to-date: /home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ament_index/resource_index/package_run_dependencies/ur3_cartesian_motion
+[639.998s] -- Installing: /home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ament_index/resource_index/parent_prefix_path/ur3_cartesian_motion
+[640.000s] -- Up-to-date: /home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ur3_cartesian_motion/environment/ament_prefix_path.sh
+[640.000s] -- Installing: /home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ur3_cartesian_motion/environment/ament_prefix_path.dsv
+[640.001s] -- Up-to-date: /home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ur3_cartesian_motion/environment/path.sh
+[640.001s] -- Installing: /home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ur3_cartesian_motion/environment/path.dsv
+[640.002s] -- Up-to-date: /home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ur3_cartesian_motion/local_setup.bash
+[640.002s] -- Up-to-date: /home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ur3_cartesian_motion/local_setup.sh
+[640.003s] -- Up-to-date: /home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ur3_cartesian_motion/local_setup.zsh
+[640.003s] -- Installing: /home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ur3_cartesian_motion/local_setup.dsv
+[640.003s] -- Installing: /home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ur3_cartesian_motion/package.dsv
+[640.004s] -- Up-to-date: /home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ament_index/resource_index/packages/ur3_cartesian_motion
+[640.005s] -- Up-to-date: /home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ur3_cartesian_motion/cmake/ur3_cartesian_motionConfig.cmake
+[640.005s] -- Up-to-date: /home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ur3_cartesian_motion/cmake/ur3_cartesian_motionConfig-version.cmake
+[640.006s] -- Up-to-date: /home/parallels/ros2_ws/src/install/ur3_cartesian_motion/share/ur3_cartesian_motion/package.xml
+[640.028s] Invoked command in '/home/parallels/ros2_ws/src/build/ur3_cartesian_motion' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/parallels/ros2_ws/install/drink_memory:/opt/ros/humble /usr/bin/cmake --install /home/parallels/ros2_ws/src/build/ur3_cartesian_motion

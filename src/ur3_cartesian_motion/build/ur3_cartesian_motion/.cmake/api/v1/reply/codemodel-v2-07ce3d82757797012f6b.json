@@ -1,0 +1,79 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-2189f942f957b6a29795.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "ur3_cartesian_motion",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-898d4e9db6e327a3bf28.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ur3_cartesian_motion_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ur3_cartesian_motion_node-715cdde3a5e00dc2ccbb.json",
+					"name" : "ur3_cartesian_motion_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ur3_cartesian_motion_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ur3_cartesian_motion_uninstall-3e4ee662a18e1ecaba22.json",
+					"name" : "ur3_cartesian_motion_uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/parallels/ros2_ws/src/ur3_cartesian_motion/build/ur3_cartesian_motion",
+		"source" : "/home/parallels/ros2_ws/src/ur3_cartesian_motion"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}
