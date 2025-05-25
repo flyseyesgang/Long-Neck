@@ -42,7 +42,7 @@ public:
     }
 
     // 4) Otherwise fall back to live camera mode
-    int cam_index = declare_parameter<int>("camera_index", 3);
+    int cam_index = declare_parameter<int>("camera_index", 2);
     double fps    = declare_parameter<double>("fps", 30.0);
 
     if (!cap_.open(cam_index)) {
