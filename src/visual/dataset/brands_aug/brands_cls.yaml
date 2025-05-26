@@ -1,0 +1,16 @@
+names:
+- Asahi
+- CarltonDry
+- Corona
+- GreatNorthern_Original
+- Hahn_Premium
+- Heineken
+- JamesSquire_Lashes
+- Sapporo
+- Stone&Wood
+- Tooheys_New
+- Tooheys_Old
+- XXXX_Gold
+path: /home/rhys/ros2_ws/src/RS2/visual/dataset/brands_aug
+train: train
+val: val

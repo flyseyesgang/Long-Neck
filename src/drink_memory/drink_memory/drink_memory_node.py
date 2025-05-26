@@ -13,6 +13,8 @@ import rclpy
 from rclpy.node import Node
 from std_msgs.msg import String, Int32
 from geometry_msgs.msg import PoseStamped
+from std_srvs.srv import Empty
+from std_msgs.msg import Bool
  
 
 class MemoryDecisionNode(Node):
@@ -21,6 +23,11 @@ class MemoryDecisionNode(Node):
         # Decision logic parameters
         self.declare_parameter('test_step', 1)
         self.test_step = self.get_parameter('test_step').value
+
+        self.esky_found = False
+        self.create_subscription(
+            Bool, 'esky_found', self.esky_found_cb, 10)
+
 
         # Dynamic visual data (initially None or empty)
         self.total_slots = None            # will be set by esky_slot_count subscriber
@@ -37,7 +44,8 @@ class MemoryDecisionNode(Node):
         # Publishers
         self.next_slot_pub = self.create_publisher(Int32, 'next_slot', 10)
         self.restock_pub   = self.create_publisher(String, 'restock_request', 10)
-        self.cart_goal_pub = self.create_publisher(PoseStamped, 'cartesian_goal', 10)
+        # self.cart_goal_pub = self.create_publisher(PoseStamped, 'cartesian_goal', 10)
+        self.cart_goal_pub = self.create_publisher(PoseStamped, '/cartesian_goal', 10)
 
         # Subscribers: decision inputs
         self.create_subscription(String, 'requested_drink', self.request_cb, 10)
@@ -49,12 +57,39 @@ class MemoryDecisionNode(Node):
         self.create_subscription(PoseStamped, 'esky_slot_pose',  self.slot_pose_cb,  10)
         self.create_subscription(PoseStamped, 'dropoff_location', self.dropoff_cb,   10)
 
+        ## New subscriber for overall esky origin pose
+        self.create_subscription(PoseStamped, 'esky_pose', self.esky_pose_cb, 10)
+
+        # Service client to trigger the esky scan motion
+        self.scan_client = self.create_client(Empty, 'scan_for_esky')
+
         self.get_logger().info(
             f'DrinkMemoryNode started (test_step={self.test_step}), waiting for visual data...'
         )
+        # Kick off the esky search at startup
+        self.on_startup()
+    
+    def on_startup(self):
+        """Call the UR3 node to sweep the camera and publish esky poses."""
+        if self.esky_found:
+            return
+        if not self.scan_client.wait_for_service(timeout_sec=2.0):
+            self.get_logger().error('scan_for_esky service not available!')
+            return
+        req = Empty.Request()
+        self.scan_client.call_async(Empty.Request())
+        self.get_logger().info('Requested esky scan.')
+        # self.scan_client.call_async(req)
+        # self.get_logger().info('Requested esky scan.')
+
+    def esky_found_cb(self, msg: Bool):
+        self.esky_found = msg.data
+        if self.esky_found:
+            self.get_logger().info("Esky located—unlocking search logic.")
 
     def slot_count_cb(self, msg: Int32):
         self.total_slots = msg.data
+        # self.esky_found = True
         self.get_logger().info(f"Total slots updated: {self.total_slots}")
 
     def dropoff_cb(self, msg: PoseStamped):
@@ -75,27 +110,51 @@ class MemoryDecisionNode(Node):
         )
         self.get_logger().info(f"Slot {slot_id} pose updated: {self.slot_coords[slot_id]}")
 
+    def esky_pose_cb(self, msg: PoseStamped):
+        self.esky_origin = (
+            msg.pose.position.x,
+            msg.pose.position.y,
+            msg.pose.position.z
+        )
+        self.get_logger().info(f"Esky origin set to: {self.esky_origin}")
 
     def move_to(self, coord):########
         """
         Pseudo-interface for UR3 movement to a Cartesian goal.
         In real integration, replace this with action client calls.
         """
+        """Publish a PoseStamped that offsets by esky origin."""
+        if self.esky_origin:
+            x = self.esky_origin[0] + coord[0]
+            y = self.esky_origin[1] + coord[1]
+            z = self.esky_origin[2] + coord[2]
+        else:
+            x, y, z = coord
         # self.get_logger().info(f'[UR3] Pseudo-moving to {coord}')
         msg = PoseStamped()
         msg.header.stamp = self.get_clock().now().to_msg()
         msg.header.frame_id = 'base_link'    # match your MoveIt frame
-        msg.pose.position.x = coord[0]
-        msg.pose.position.y = coord[1]
-        msg.pose.position.z = coord[2]
-        # keep orientation fixed (you could parameterise this)
+        msg.pose.position.x = x
+        msg.pose.position.y = y
+        msg.pose.position.z = z
         msg.pose.orientation.x = 0.0
         msg.pose.orientation.y = 0.0
         msg.pose.orientation.z = 0.0
         msg.pose.orientation.w = 1.0
 
         self.cart_goal_pub.publish(msg)
-        self.get_logger().info(f'Published cartesian_goal: {coord}')
+        self.get_logger().info(f'Published cartesian_goal: ({x:.3f}, {y:.3f}, {z:.3f})')
+        # msg.pose.position.x = coord[0]
+        # msg.pose.position.y = coord[1]
+        # msg.pose.position.z = coord[2]
+        # # keep orientation fixed (you could parameterise this)
+        # msg.pose.orientation.x = 0.0
+        # msg.pose.orientation.y = 0.0
+        # msg.pose.orientation.z = 0.0
+        # msg.pose.orientation.w = 1.0
+
+        # self.cart_goal_pub.publish(msg)
+        # self.get_logger().info(f'Published cartesian_goal: {coord}')
 
     def request_cb(self, msg: String):
         """
@@ -153,6 +212,9 @@ class MemoryDecisionNode(Node):
         """
         Determine next slot to check based on test_step logic. Publish and move.
         """
+        if not self.esky_found:
+            self.get_logger().warn("Waiting for esky detection—no slot checks yet.")
+            return
         # Test 3+: prioritise known location if still valid
         if self.test_step >= 3 and self.current_target in self.drink_locations:
             known = self.drink_locations[self.current_target]

@@ -12,6 +12,8 @@ find_package(tf2_geometry_msgs REQUIRED)
 find_package(moveit_core REQUIRED)
 find_package(moveit_ros_planning_interface REQUIRED)
 find_package(moveit_msgs REQUIRED)
+find_package(std_msgs REQUIRED)
+find_package(std_srvs REQUIRED)
 
 add_executable(ur3_cartesian_motion_node
   src/ur3_cartesian_motion_node.cpp
@@ -24,6 +26,8 @@ ament_target_dependencies(ur3_cartesian_motion_node
   moveit_core
   moveit_ros_planning_interface
   moveit_msgs
+  std_msgs
+  std_srvs
 )
 
 install(TARGETS ur3_cartesian_motion_node
@@ -73,7 +77,7 @@ ament_package()
 #   set(ament_cmake_cpplint_FOUND TRUE)
 #   ament_lint_auto_find_test_dependencies()
 # endif()
-
+ 
 # ament_package()
 
 # cmake_minimum_required(VERSION 3.8)

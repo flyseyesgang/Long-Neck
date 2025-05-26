@@ -1,0 +1,4 @@
+source;share/Visual/local_setup.bash
+source;share/Visual/local_setup.dsv
+source;share/Visual/local_setup.sh
+source;share/Visual/local_setup.zsh

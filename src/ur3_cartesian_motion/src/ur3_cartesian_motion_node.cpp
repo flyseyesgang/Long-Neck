@@ -5,74 +5,142 @@
 #include <geometry_msgs/msg/pose_stamped.hpp>
 #include <std_msgs/msg/int32.hpp>
 #include <chrono>
-
+#include <std_srvs/srv/empty.hpp>
+#include <cmath>
+#include <std_msgs/msg/bool.hpp>
 
 class UR3CartesianMotionNode : public rclcpp::Node
 {
 public:
-  UR3CartesianMotionNode()
-  : Node("ur3_cartesian_motion_node")
-  {
-        this->declare_parameter("velocity_scaling", 0.1);
+    UR3CartesianMotionNode()
+        : Node("ur3_cartesian_motion_node")
+    {
+        this->declare_parameter("velocity_scaling", 0.2); // was 0.1, trying to slow it doewn
         this->get_parameter("velocity_scaling", velocity_scaling_);
 
         status_pub_ = this->create_publisher<std_msgs::msg::Int32>("ur_status", 10);
+        esky_found_pub_ = this->create_publisher<std_msgs::msg::Bool>("esky_found", 1);
         pose_sub_ = this->create_subscription<geometry_msgs::msg::PoseStamped>(
             "/cartesian_goal", 10,
-            std::bind(&UR3CartesianMotionNode::poseCallback, this, std::placeholders::_1)
-        );
+            std::bind(&UR3CartesianMotionNode::poseCallback, this, std::placeholders::_1));
+
+        esky_found_sub_ = this->create_subscription<std_msgs::msg::Bool>(
+            "/esky_found", 10,
+            [this](std_msgs::msg::Bool::SharedPtr msg)
+            {
+                esky_found_ = msg->data;
+                RCLCPP_INFO(get_logger(), "esky_found_ = %s",
+                            esky_found_ ? "true" : "false");
+            });
+
+        // service to trigger an esky scan
+        scan_esky_srv_ = this->create_service<std_srvs::srv::Empty>(
+            "scan_for_esky",
+            std::bind(&UR3CartesianMotionNode::scanEsky, this,
+                      std::placeholders::_1, std::placeholders::_2));
     }
 
-    void initializeMoveGroup() {
+    void initializeMoveGroup()
+    {
         move_group_interface_ = std::make_shared<moveit::planning_interface::MoveGroupInterface>(
-            std::static_pointer_cast<rclcpp::Node>(shared_from_this()), "ur_manipulator"
-        );
+            std::static_pointer_cast<rclcpp::Node>(shared_from_this()), "ur_manipulator");
         move_group_interface_->setMaxVelocityScalingFactor(velocity_scaling_);
         startupInitPose();
     }
 
 private:
-    void startupInitPose() {
+    void scanEsky(
+        const std::shared_ptr<std_srvs::srv::Empty::Request> /*req*/,
+        std::shared_ptr<std_srvs::srv::Empty::Response> /*res*/)
+    {
+        RCLCPP_INFO(get_logger(), "Scanning for esky with downward-facing camera…");
+
+        // A “downward” wrist orientation from your startup pose:
+        // [q1,     q2,      q3,       q4,        q5,        q6   ]
+        std::vector<double> scan_joints = {
+            0.0,         // will be overwritten per step
+            -0.7854,     // same as your startup q2
+            1.0472,      //     ”     q3
+            -1.5708,     //     ”     q4
+            -1.5708,     //     ”     q5
+            (M_PI / 3.0) //     ”     q6
+        };
+
+        // Angles at which to rotate joint-1:
+        const std::array<double, 3> base_angles = {0.0, M_PI / 2, -M_PI / 2};
+
+        for (double θ : base_angles)
+        {
+            if (esky_found_)
+            {
+                RCLCPP_INFO(get_logger(), "Esky already found—stopping scan early.");
+                break;
+            }
+            scan_joints[0] = θ; // only change joint-1
+
+            // send the full 6-DOF joint target
+            move_group_interface_->setJointValueTarget(scan_joints);
+            if (!move_group_interface_->move())
+            {
+                RCLCPP_WARN(get_logger(), "  • move() failed at base=%.2f", θ);
+            }
+            // pause so vision has time to capture
+            rclcpp::sleep_for(std::chrono::milliseconds(500));
+        }
+
+        RCLCPP_INFO(get_logger(), "Esky scan complete.");
+    }
+
+    void startupInitPose()
+    {
         std::vector<double> init_joint_positions = {2.61799, -0.7854, 1.0472, -1.5708, -1.5708, 0.0};
         move_group_interface_->setJointValueTarget(init_joint_positions);
 
         moveit::planning_interface::MoveGroupInterface::Plan plan;
         bool success = static_cast<bool>(move_group_interface_->plan(plan));
 
-        if (success) {
+        if (success)
+        {
             RCLCPP_INFO(this->get_logger(), "Executing startup pose.");
             move_group_interface_->execute(plan);
-        } else {
+        }
+        else
+        {
             RCLCPP_ERROR(this->get_logger(), "Failed to plan startup pose.");
         }
     }
 
-    void scaleTrajectorySpeed(moveit_msgs::msg::RobotTrajectory &trajectory, double scale) {
-        for (auto &point : trajectory.joint_trajectory.points) {
-            for (auto &vel : point.velocities) {
+    void scaleTrajectorySpeed(moveit_msgs::msg::RobotTrajectory &trajectory, double scale)
+    {
+        for (auto &point : trajectory.joint_trajectory.points)
+        {
+            for (auto &vel : point.velocities)
+            {
                 vel *= scale;
             }
-            for (auto &acc : point.accelerations) {
+            for (auto &acc : point.accelerations)
+            {
                 acc *= scale;
             }
 
             int64_t total_ns = static_cast<int64_t>(
-                point.time_from_start.sec * 1e9 + point.time_from_start.nanosec
-            );
+                point.time_from_start.sec * 1e9 + point.time_from_start.nanosec);
             int64_t scaled_ns = static_cast<int64_t>(total_ns / scale);
             point.time_from_start = rclcpp::Duration(std::chrono::nanoseconds(scaled_ns));
         }
     }
 
-    void poseCallback(const geometry_msgs::msg::PoseStamped::SharedPtr msg) {
-        if (!move_group_interface_) {
+    void poseCallback(const geometry_msgs::msg::PoseStamped::SharedPtr msg)
+    {
+        if (!move_group_interface_)
+        {
             RCLCPP_ERROR(this->get_logger(), "MoveGroupInterface not initialized!");
             return;
         }
 
         RCLCPP_INFO(this->get_logger(), "Received new target pose.");
         std_msgs::msg::Int32 status_msg;
-        status_msg.data = 2;  // Currently executing
+        status_msg.data = 2; // Currently executing
         status_pub_->publish(status_msg);
 
         move_group_interface_->setStartStateToCurrentState();
@@ -81,10 +149,13 @@ private:
         moveit_msgs::msg::RobotTrajectory trajectory;
         double fraction = move_group_interface_->computeCartesianPath(waypoints, 0.01, 0.0, trajectory);
 
-        if (fraction < 0.9) {
+        if (fraction < 0.9)
+        {
             RCLCPP_ERROR(this->get_logger(), "Singularity detected or planning failed (%.2f%%)", fraction * 100.0);
-            status_msg.data = 3;  // Singularity
-        } else {
+            status_msg.data = 3; // Singularity
+        }
+        else
+        {
             scaleTrajectorySpeed(trajectory, velocity_scaling_);
 
             moveit::planning_interface::MoveGroupInterface::Plan plan;
@@ -95,14 +166,18 @@ private:
 
         status_pub_->publish(status_msg);
     }
-
     rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr pose_sub_;
+    rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr esky_found_sub_;
+    rclcpp::Publisher<std_msgs::msg::Bool>::SharedPtr esky_found_pub_;
     rclcpp::Publisher<std_msgs::msg::Int32>::SharedPtr status_pub_;
     std::shared_ptr<moveit::planning_interface::MoveGroupInterface> move_group_interface_;
+    rclcpp::Service<std_srvs::srv::Empty>::SharedPtr scan_esky_srv_;
     double velocity_scaling_;
+    bool esky_found_ = false;
 };
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     rclcpp::init(argc, argv);
     auto node = std::make_shared<UR3CartesianMotionNode>();
     node->initializeMoveGroup();
@@ -111,8 +186,119 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
+// #include <cstdio>
+// #include <memory>
+// #include <rclcpp/rclcpp.hpp>
+// #include <moveit/move_group_interface/move_group_interface.h>
+// #include <geometry_msgs/msg/pose_stamped.hpp>
+// #include <std_msgs/msg/int32.hpp>
+// #include <chrono>
 
-// kinda works 
+// class UR3CartesianMotionNode : public rclcpp::Node
+// {
+// public:
+//   UR3CartesianMotionNode()
+//   : Node("ur3_cartesian_motion_node")
+//   {
+//         this->declare_parameter("velocity_scaling", 0.1);
+//         this->get_parameter("velocity_scaling", velocity_scaling_);
+
+//         status_pub_ = this->create_publisher<std_msgs::msg::Int32>("ur_status", 10);
+//         pose_sub_ = this->create_subscription<geometry_msgs::msg::PoseStamped>(
+//             "/cartesian_goal", 10,
+//             std::bind(&UR3CartesianMotionNode::poseCallback, this, std::placeholders::_1)
+//         );
+//     }
+
+//     void initializeMoveGroup() {
+//         move_group_interface_ = std::make_shared<moveit::planning_interface::MoveGroupInterface>(
+//             std::static_pointer_cast<rclcpp::Node>(shared_from_this()), "ur_manipulator"
+//         );
+//         move_group_interface_->setMaxVelocityScalingFactor(velocity_scaling_);
+//         startupInitPose();
+//     }
+
+// private:
+//     void startupInitPose() {
+//         std::vector<double> init_joint_positions = {2.61799, -0.7854, 1.0472, -1.5708, -1.5708, 0.0};
+//         move_group_interface_->setJointValueTarget(init_joint_positions);
+
+//         moveit::planning_interface::MoveGroupInterface::Plan plan;
+//         bool success = static_cast<bool>(move_group_interface_->plan(plan));
+
+//         if (success) {
+//             RCLCPP_INFO(this->get_logger(), "Executing startup pose.");
+//             move_group_interface_->execute(plan);
+//         } else {
+//             RCLCPP_ERROR(this->get_logger(), "Failed to plan startup pose.");
+//         }
+//     }
+
+//     void scaleTrajectorySpeed(moveit_msgs::msg::RobotTrajectory &trajectory, double scale) {
+//         for (auto &point : trajectory.joint_trajectory.points) {
+//             for (auto &vel : point.velocities) {
+//                 vel *= scale;
+//             }
+//             for (auto &acc : point.accelerations) {
+//                 acc *= scale;
+//             }
+
+//             int64_t total_ns = static_cast<int64_t>(
+//                 point.time_from_start.sec * 1e9 + point.time_from_start.nanosec
+//             );
+//             int64_t scaled_ns = static_cast<int64_t>(total_ns / scale);
+//             point.time_from_start = rclcpp::Duration(std::chrono::nanoseconds(scaled_ns));
+//         }
+//     }
+
+//     void poseCallback(const geometry_msgs::msg::PoseStamped::SharedPtr msg) {
+//         if (!move_group_interface_) {
+//             RCLCPP_ERROR(this->get_logger(), "MoveGroupInterface not initialized!");
+//             return;
+//         }
+
+//         RCLCPP_INFO(this->get_logger(), "Received new target pose.");
+//         std_msgs::msg::Int32 status_msg;
+//         status_msg.data = 2;  // Currently executing
+//         status_pub_->publish(status_msg);
+
+//         move_group_interface_->setStartStateToCurrentState();
+
+//         std::vector<geometry_msgs::msg::Pose> waypoints = {msg->pose};
+//         moveit_msgs::msg::RobotTrajectory trajectory;
+//         double fraction = move_group_interface_->computeCartesianPath(waypoints, 0.01, 0.0, trajectory);
+
+//         if (fraction < 0.9) {
+//             RCLCPP_ERROR(this->get_logger(), "Singularity detected or planning failed (%.2f%%)", fraction * 100.0);
+//             status_msg.data = 3;  // Singularity
+//         } else {
+//             scaleTrajectorySpeed(trajectory, velocity_scaling_);
+
+//             moveit::planning_interface::MoveGroupInterface::Plan plan;
+//             plan.trajectory_ = trajectory;
+//             auto result = move_group_interface_->execute(plan);
+//             status_msg.data = (result == moveit::core::MoveItErrorCode::SUCCESS) ? 1 : 4;
+//         }
+
+//         status_pub_->publish(status_msg);
+//     }
+
+//     rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr pose_sub_;
+//     rclcpp::Publisher<std_msgs::msg::Int32>::SharedPtr status_pub_;
+//     std::shared_ptr<moveit::planning_interface::MoveGroupInterface> move_group_interface_;
+//     double velocity_scaling_;
+// };
+
+// int main(int argc, char *argv[]) {
+//     rclcpp::init(argc, argv);
+//     auto node = std::make_shared<UR3CartesianMotionNode>();
+//     node->initializeMoveGroup();
+//     rclcpp::spin(node);
+//     rclcpp::shutdown();
+//     return 0;
+// }
+
+// kinda works
 // #include <rclcpp/rclcpp.hpp>
 // #include <moveit/move_group_interface/move_group_interface.h>
 // #include <geometry_msgs/msg/pose_stamped.hpp>
@@ -144,7 +330,6 @@ int main(int argc, char *argv[]) {
 //         // *** NEW: slow down for smooth Cartesian moves ***
 //     move_group_->setMaxVelocityScalingFactor(0.1);
 //     move_group_->setMaxAccelerationScalingFactor(0.1);
-
 
 //     cart_sub_ = this->create_subscription<geometry_msgs::msg::PoseStamped>(
 //       "cartesian_goal", 10,
@@ -300,8 +485,6 @@ int main(int argc, char *argv[]) {
 //   return 0;
 // }
 
-
-
 // src/ur3_cartesian_motion_node.cpp this works
 
 // #include <rclcpp/rclcpp.hpp>
@@ -367,7 +550,6 @@ int main(int argc, char *argv[]) {
 //   rclcpp::shutdown();
 //   return 0;
 // }
-
 
 // #include <rclcpp/rclcpp.hpp>
 // #include <moveit/move_group_interface/move_group_interface.h>

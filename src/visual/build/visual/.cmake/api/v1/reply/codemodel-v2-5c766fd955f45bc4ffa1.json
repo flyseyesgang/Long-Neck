@@ -1,0 +1,133 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-7c4fd30cf3ba52c40058.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "visual",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "bottle_detector_ort::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-bottle_detector_ort-1ea143272a90deeb10c5.json",
+					"name" : "bottle_detector_ort",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "brand_recognition::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-brand_recognition-cd70f32271390124876a.json",
+					"name" : "brand_recognition",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "camera_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-camera_node-f768e03504bf3b78e62f.json",
+					"name" : "camera_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cartesian::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cartesian-0163a145e77ea61b5ec7.json",
+					"name" : "cartesian",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "crop_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-crop_node-ab7a5f53b00d5bed4404.json",
+					"name" : "crop_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "esky_detector::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-esky_detector-ba59d6dc6154359e1957.json",
+					"name" : "esky_detector",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "fusion_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-fusion_node-17a82d0769547d1d8448.json",
+					"name" : "fusion_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-3b8d444d27b5a950b90e.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "visual_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-visual_uninstall-eda10b4a036f898c2613.json",
+					"name" : "visual_uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/rhys/ros2_ws/src/RS2/visual/build/visual",
+		"source" : "/home/rhys/ros2_ws/src/RS2/visual"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

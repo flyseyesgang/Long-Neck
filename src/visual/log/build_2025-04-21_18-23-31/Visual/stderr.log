@@ -1,0 +1,13 @@
+WARNING: Package name "Visual" does not follow the naming conventions. It should start with a lower case letter and only contain lower case letters, digits, underscores, and dashes.
+[01m[K/home/rhys/ros2_ws/src/RS2/Visual/src/yolo_visualiser.cpp:[m[K In member function ‘[01m[Kvoid YoloNode::on_image(sensor_msgs::msg::Image_<std::allocator<void> >::SharedPtr)[m[K’:
+[01m[K/home/rhys/ros2_ws/src/RS2/Visual/src/yolo_visualiser.cpp:35:20:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Ksize_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+   35 |       for(int j=0;[01;35m[Kj<out.total()[m[K;j+=85){
+      |                   [01;35m[K~^~~~~~~~~~~~[m[K
+[01m[K/home/rhys/ros2_ws/src/RS2/Visual/src/Imageoverlay.cpp:[m[K In member function ‘[01m[Kstd::string BrandNode::ocr_id(const cv::Mat&)[m[K’:
+[01m[K/home/rhys/ros2_ws/src/RS2/Visual/src/Imageoverlay.cpp:97:37:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kimg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+   97 |   std::string ocr_id([01;35m[Kconst cv::Mat &img[m[K)
+      |                      [01;35m[K~~~~~~~~~~~~~~~^~~[m[K
+[01m[K/home/rhys/ros2_ws/src/RS2/Visual/src/Location.cpp:[m[K In member function ‘[01m[Kvoid LocationNode::box_cb(vision_msgs::msg::Detection2DArray_<std::allocator<void> >::SharedPtr)[m[K’:
+[01m[K/home/rhys/ros2_ws/src/RS2/Visual/src/Location.cpp:108:16:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kc[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+  108 |     for (auto &[01;35m[Kc[m[K : circles) {
+      |                [01;35m[K^[m[K

@@ -1,0 +1,61 @@
+[0.000000] (-) TimerEvent: {}
+[0.000696] (visual) JobQueued: {'identifier': 'visual', 'dependencies': OrderedDict()}
+[0.000768] (visual) JobStarted: {'identifier': 'visual'}
+[0.007941] (visual) JobProgress: {'identifier': 'visual', 'progress': 'cmake'}
+[0.008455] (visual) JobProgress: {'identifier': 'visual', 'progress': 'build'}
+[0.008884] (visual) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/rhys/ros2_ws/src/RS2/visual/build/visual', '--', '-j16', '-l16'], 'cwd': '/home/rhys/ros2_ws/src/RS2/visual/build/visual', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_AU:en'), ('USER', 'rhys'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/rhys/ros2_ws/install/turtlebot3_msgs/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:'), ('HOME', '/home/rhys'), ('OLDPWD', '/home/rhys/ros2_ws/src/RS2/visual/scripts'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/terminator.desktop'), ('GAZEBO_MASTER_URI', 'http://localhost:11345'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '1718'), ('SYSTEMD_EXEC_PID', '2035'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator23558193cd9818af7fe4d2c2f5bd9d00f'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '3272'), ('COLCON_PREFIX_PATH', '/home/rhys/ros2_ws/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'rhys'), ('JOURNAL_STREAM', '8:21261'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'rhys'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', '/usr/share/gazebo-11/models::/home/rhys/ros2_ws/src/gazebo_models_world:/home/rhys/ros2_ws/src/car_junction'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '1'), ('WINDOWPATH', '2'), ('OGRE_RESOURCE_PATH', '/usr/lib/x86_64-linux-gnu/OGRE-1.9.0'), ('PATH', '/opt/ros/humble/bin:/home/rhys/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/usr/bin'), ('SESSION_MANAGER', 'local/rhys-laptop:@/tmp/.ICE-unix/2007,unix/rhys-laptop:/tmp/.ICE-unix/2007'), ('INVOCATION_ID', 'a3dd31be45b241d1b2c35d08885235ea'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':1'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('IBUS_DISABLE_SNOOPER', '1'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('ROS_DOMAIN_ID', '30'), ('AMENT_PREFIX_PATH', '/home/rhys/ros2_ws/install/visual:/home/rhys/ros2_ws/install/turtlebot3_teleop:/home/rhys/ros2_ws/install/turtlebot3_bringup:/home/rhys/ros2_ws/install/turtlebot3_node:/home/rhys/ros2_ws/install/turtlebot3_navigation2:/home/rhys/ros2_ws/install/turtlebot3_fake_node:/home/rhys/ros2_ws/install/turtlebot3_example:/home/rhys/ros2_ws/install/turtlebot3_msgs:/home/rhys/ros2_ws/install/turtlebot3_gazebo:/home/rhys/ros2_ws/install/turtlebot3_description:/home/rhys/ros2_ws/install/turtlebot3_cartographer:/home/rhys/ros2_ws/install/drone_control:/home/rhys/ros2_ws/install/cpp_pubsub:/home/rhys/ros2_ws/install/car_junction:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('TERMINATOR_UUID', 'urn:uuid:ea23d76c-955b-4357-8fdf-48e982cd8fb0'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('Torch_DIR', '/home/rhys/libtorch/share/cmake/Torch'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GAZEBO_RESOURCE_PATH', '/usr/share/gazebo-11:/usr/share/gazebo-11:/usr/share/gazebo'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('GAZEBO_MODEL_DATABASE_URI', 'http://models.gazebosim.org'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/rhys/ros2_ws/src/RS2/visual/build/visual'), ('TURTLEBOT3_MODEL', 'waffle_pi'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('GAZEBO_PLUGIN_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/home/rhys/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/rhys/ros2_ws/install/turtlebot3_teleop/lib/python3.10/site-packages:/home/rhys/ros2_ws/install/turtlebot3_example/lib/python3.10/site-packages:/home/rhys/ros2_ws/install/turtlebot3_msgs/local/lib/python3.10/dist-packages:/home/rhys/ros2_ws/install/drone_control/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/rhys/ros2_ws/install/visual:/home/rhys/ros2_ws/install/turtlebot3_bringup:/home/rhys/ros2_ws/install/turtlebot3_node:/home/rhys/ros2_ws/install/turtlebot3_navigation2:/home/rhys/ros2_ws/install/turtlebot3_fake_node:/home/rhys/ros2_ws/install/turtlebot3_msgs:/home/rhys/ros2_ws/install/turtlebot3_gazebo:/home/rhys/ros2_ws/install/turtlebot3_description:/home/rhys/ros2_ws/install/turtlebot3_cartographer:/home/rhys/ros2_ws/install/cpp_pubsub:/home/rhys/ros2_ws/install/car_junction:/home/rhys/ros2_ws/install/turtlebot3_teleop:/home/rhys/ros2_ws/install/turtlebot3_example:/home/rhys/ros2_ws/install/drone_control:/opt/ros/humble')]), 'shell': False}
+[0.031521] (visual) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.099834] (-) TimerEvent: {}
+[0.125984] (visual) StdoutLine: {'line': b'-- Found rclcpp: 16.0.11 (/opt/ros/humble/share/rclcpp/cmake)\n'}
+[0.147716] (visual) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[0.149423] (visual) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[0.153523] (visual) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[0.160568] (visual) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.169466] (visual) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.191690] (visual) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[0.192847] (visual) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[0.199949] (-) TimerEvent: {}
+[0.287179] (visual) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[0.300031] (-) TimerEvent: {}
+[0.320351] (visual) StdoutLine: {'line': b'-- Found sensor_msgs: 4.2.4 (/opt/ros/humble/share/sensor_msgs/cmake)\n'}
+[0.340293] (visual) StdoutLine: {'line': b'-- Found vision_msgs: 4.1.1 (/opt/ros/humble/share/vision_msgs/cmake)\n'}
+[0.350320] (visual) StdoutLine: {'line': b'-- Found cv_bridge: 3.2.1 (/opt/ros/humble/share/cv_bridge/cmake)\n'}
+[0.356137] (visual) StdoutLine: {'line': b'-- Found image_transport: 3.1.10 (/opt/ros/humble/share/image_transport/cmake)\n'}
+[0.400137] (-) TimerEvent: {}
+[0.450760] (visual) StdoutLine: {'line': b'-- Configuring done\n'}
+[0.485921] (visual) StdoutLine: {'line': b'-- Generating done\n'}
+[0.497997] (visual) StdoutLine: {'line': b'-- Build files have been written to: /home/rhys/ros2_ws/src/RS2/visual/build/visual\n'}
+[0.500212] (-) TimerEvent: {}
+[0.522583] (visual) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target fusion_node\x1b[0m\n'}
+[0.522776] (visual) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target camera_node\x1b[0m\n'}
+[0.522840] (visual) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target bottle_detector_ort\x1b[0m\n'}
+[0.522896] (visual) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target esky_detector\x1b[0m\n'}
+[0.522950] (visual) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target brand_recognition\x1b[0m\n'}
+[0.523002] (visual) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target cartesian\x1b[0m\n'}
+[0.532862] (visual) StdoutLine: {'line': b'[  7%] \x1b[32mBuilding CXX object CMakeFiles/crop_node.dir/src/CropNode.cpp.o\x1b[0m\n'}
+[0.541086] (visual) StdoutLine: {'line': b'[ 50%] Built target camera_node\n'}
+[0.541310] (visual) StdoutLine: {'line': b'[ 50%] Built target fusion_node\n'}
+[0.541383] (visual) StdoutLine: {'line': b'[ 50%] Built target bottle_detector_ort\n'}
+[0.548220] (visual) StdoutLine: {'line': b'[ 71%] Built target esky_detector\n'}
+[0.548366] (visual) StdoutLine: {'line': b'[ 78%] Built target cartesian\n'}
+[0.548719] (visual) StdoutLine: {'line': b'[ 85%] \x1b[32mBuilding CXX object CMakeFiles/brand_recognition.dir/src/BrandRecognition.cpp.o\x1b[0m\n'}
+[0.600325] (-) TimerEvent: {}
+[0.700600] (-) TimerEvent: {}
+[0.800916] (-) TimerEvent: {}
+[0.901242] (-) TimerEvent: {}
+[1.001519] (-) TimerEvent: {}
+[1.101799] (-) TimerEvent: {}
+[1.202072] (-) TimerEvent: {}
+[1.302360] (-) TimerEvent: {}
+[1.402668] (-) TimerEvent: {}
+[1.502981] (-) TimerEvent: {}
+[1.603282] (-) TimerEvent: {}
+[1.703564] (-) TimerEvent: {}
+[1.709233] (visual) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/crop_node.dir/build.make:76: CMakeFiles/crop_node.dir/src/CropNode.cpp.o] Interrupt\n'}
+[1.709398] (visual) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/brand_recognition.dir/build.make:76: CMakeFiles/brand_recognition.dir/src/BrandRecognition.cpp.o] Interrupt\n'}
+[1.709500] (visual) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:305: CMakeFiles/crop_node.dir/all] Interrupt\n'}
+[1.709565] (visual) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:253: CMakeFiles/brand_recognition.dir/all] Interrupt\n'}
+[1.709675] (visual) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Interrupt\n'}
+[1.726767] (visual) CommandEnded: {'returncode': -2}
+[1.734859] (visual) JobEnded: {'identifier': 'visual', 'rc': 'SIGINT'}
+[1.745408] (-) EventReactorShutdown: {}

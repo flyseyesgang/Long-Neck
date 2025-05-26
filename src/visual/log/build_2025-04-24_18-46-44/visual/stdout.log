@@ -1,0 +1,30 @@
+-- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+-- Found rclcpp: 16.0.11 (/opt/ros/humble/share/rclcpp/cmake)
+-- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+-- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+-- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+-- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+-- Using RMW implementation 'rmw_fastrtps_cpp' as default
+-- Found sensor_msgs: 4.2.4 (/opt/ros/humble/share/sensor_msgs/cmake)
+-- Found vision_msgs: 4.1.1 (/opt/ros/humble/share/vision_msgs/cmake)
+-- Found cv_bridge: 3.2.1 (/opt/ros/humble/share/cv_bridge/cmake)
+-- Found image_transport: 3.1.10 (/opt/ros/humble/share/image_transport/cmake)
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/rhys/ros2_ws/src/RS2/visual/build/visual
+[35m[1mConsolidate compiler generated dependencies of target fusion_node[0m
+[35m[1mConsolidate compiler generated dependencies of target camera_node[0m
+[35m[1mConsolidate compiler generated dependencies of target bottle_detector_ort[0m
+[35m[1mConsolidate compiler generated dependencies of target esky_detector[0m
+[35m[1mConsolidate compiler generated dependencies of target brand_recognition[0m
+[35m[1mConsolidate compiler generated dependencies of target cartesian[0m
+[  7%] [32mBuilding CXX object CMakeFiles/crop_node.dir/src/CropNode.cpp.o[0m
+[ 50%] Built target camera_node
+[ 50%] Built target fusion_node
+[ 50%] Built target bottle_detector_ort
+[ 71%] Built target esky_detector
+[ 78%] Built target cartesian
+[ 85%] [32mBuilding CXX object CMakeFiles/brand_recognition.dir/src/BrandRecognition.cpp.o[0m
