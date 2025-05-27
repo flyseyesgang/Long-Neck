@@ -1,4 +1,5 @@
-#!/usr/bin/env python3
+# This should hopefully be able to be integrated with Rhys's Pieces
+# !/usr/bin/env python3
 """
 ROS2 node for drink memory and search strategy.
 Supports test steps 1-5:
@@ -12,63 +13,148 @@ import rclpy
 from rclpy.node import Node
 from std_msgs.msg import String, Int32
 from geometry_msgs.msg import PoseStamped
-
+from std_srvs.srv import Empty
+from std_msgs.msg import Bool
+ 
 
 class MemoryDecisionNode(Node):
     def __init__(self):
         super().__init__('drink_memory')
-        # Declare ROS parameters
-        self.declare_parameter('total_slots', 9)  # default 3x3 grid
-        self.declare_parameter('test_step', 1)    # test step 1..5
-        self.total_slots = self.get_parameter('total_slots').value
+        # Decision logic parameters
+        self.declare_parameter('test_step', 1)
         self.test_step = self.get_parameter('test_step').value
 
-        # Placeholder coordinates for each slot (3x3 grid)
-        # Format: slot_number: (x, y, z) in robot frame
-        self.slot_coords = {
-            1: (0.1, 0.1, 0.0), 2: (0.2, 0.1, 0.0), 3: (0.3, 0.1, 0.0),
-            4: (0.1, 0.2, 0.0), 5: (0.2, 0.2, 0.0), 6: (0.3, 0.2, 0.0),
-            7: (0.1, 0.3, 0.0), 8: (0.2, 0.3, 0.0), 9: (0.3, 0.3, 0.0),
-        }
-        # Placeholder drop-off coordinate
-        self.dropoff_coord = (0.5, 0.0, 0.2)
+        self.esky_found = False
+        self.create_subscription(
+            Bool, 'esky_found', self.esky_found_cb, 10)
+
+
+        # Dynamic visual data (initially None or empty)
+        self.total_slots = None            # will be set by esky_slot_count subscriber
+        self.slot_coords = {}              # slot_id -> (x,y,z)
+        self.dropoff_coord = None          # (x,y,z)
 
         # Internal memory structures
-        self.empty_slots = set()      # slots known empty or retrieved
-        self.checked_wrong = set()    # slots checked but contained wrong drinks
-        self.drink_locations = {}     # mapping drink_name -> slot
-        self.current_target = None    # drink currently being searched
-        self.checked_this_request = set()  # slots checked for the current request
+        self.empty_slots = set()
+        self.checked_wrong = set()
+        self.drink_locations = {}
+        self.current_target = None
+        self.checked_this_request = set()
 
-        # Publishers for slot decisions and restock requests
+        # Publishers
         self.next_slot_pub = self.create_publisher(Int32, 'next_slot', 10)
         self.restock_pub   = self.create_publisher(String, 'restock_request', 10)
-        self.cart_goal_pub = self.create_publisher(PoseStamped, 'cartesian_goal', 10)
+        # self.cart_goal_pub = self.create_publisher(PoseStamped, 'cartesian_goal', 10)
+        self.cart_goal_pub = self.create_publisher(PoseStamped, '/cartesian_goal', 10)
 
-        # Subscribers for requests and scan results
+        # Subscribers: decision inputs
         self.create_subscription(String, 'requested_drink', self.request_cb, 10)
         self.create_subscription(Int32,  'scanned_slot',     self.slot_cb,   10)
         self.create_subscription(String, 'scanned_drink',    self.scan_cb,   10)
 
-        self.get_logger().info(f'MemoryDecisionNode started (step={self.test_step}, slots={self.total_slots})')
+        # Subscribers: visual data
+        self.create_subscription(Int32,     'esky_slot_count', self.slot_count_cb, 10)
+        self.create_subscription(PoseStamped, 'esky_slot_pose',  self.slot_pose_cb,  10)
+        self.create_subscription(PoseStamped, 'dropoff_location', self.dropoff_cb,   10)
+
+        ## New subscriber for overall esky origin pose
+        self.create_subscription(PoseStamped, 'esky_pose', self.esky_pose_cb, 10)
+
+        # Service client to trigger the esky scan motion
+        self.scan_client = self.create_client(Empty, 'scan_for_esky')
+
+        self.get_logger().info(
+            f'DrinkMemoryNode started (test_step={self.test_step}), waiting for visual data...'
+        )
+        # Kick off the esky search at startup
+        self.on_startup()
+    
+    def on_startup(self):
+        """Call the UR3 node to sweep the camera and publish esky poses."""
+        if self.esky_found:
+            return
+        if not self.scan_client.wait_for_service(timeout_sec=2.0):
+            self.get_logger().error('scan_for_esky service not available!')
+            return
+        req = Empty.Request()
+        self.scan_client.call_async(Empty.Request())
+        self.get_logger().info('Requested esky scan.')
+        # self.scan_client.call_async(req)
+        # self.get_logger().info('Requested esky scan.')
+
+    def esky_found_cb(self, msg: Bool):
+        self.esky_found = msg.data
+        if self.esky_found:
+            self.get_logger().info("Esky located—unlocking search logic.")
+
+    def slot_count_cb(self, msg: Int32):
+        self.total_slots = msg.data
+        # self.esky_found = True
+        self.get_logger().info(f"Total slots updated: {self.total_slots}")
+
+    def dropoff_cb(self, msg: PoseStamped):
+        self.dropoff_coord = (
+            msg.pose.position.x,
+            msg.pose.position.y,
+            msg.pose.position.z
+        )
+        self.get_logger().info(f"Drop-off coord set to {self.dropoff_coord}")
+
+    def slot_pose_cb(self, msg: PoseStamped):
+        # if the header or a field encodes which slot:
+        slot_id = int(msg.header.frame_id)  # or use msg.slot_index if custom
+        self.slot_coords[slot_id] = (
+            msg.pose.position.x,
+            msg.pose.position.y,
+            msg.pose.position.z
+        )
+        self.get_logger().info(f"Slot {slot_id} pose updated: {self.slot_coords[slot_id]}")
+
+    def esky_pose_cb(self, msg: PoseStamped):
+        self.esky_origin = (
+            msg.pose.position.x,
+            msg.pose.position.y,
+            msg.pose.position.z
+        )
+        self.get_logger().info(f"Esky origin set to: {self.esky_origin}")
 
     def move_to(self, coord):########
         """
         Pseudo-interface for UR3 movement to a Cartesian goal.
         In real integration, replace this with action client calls.
         """
+        """Publish a PoseStamped that offsets by esky origin."""
+        if self.esky_origin:
+            x = self.esky_origin[0] + coord[0]
+            y = self.esky_origin[1] + coord[1]
+            z = self.esky_origin[2] + coord[2]
+        else:
+            x, y, z = coord
         # self.get_logger().info(f'[UR3] Pseudo-moving to {coord}')
         msg = PoseStamped()
         msg.header.stamp = self.get_clock().now().to_msg()
         msg.header.frame_id = 'base_link'    # match your MoveIt frame
-        msg.pose.position.x = coord[0]
-        msg.pose.position.y = coord[1]
-        msg.pose.position.z = coord[2]
-        # keep orientation fixed (you could parameterise this)
+        msg.pose.position.x = x
+        msg.pose.position.y = y
+        msg.pose.position.z = z
+        msg.pose.orientation.x = 0.0
+        msg.pose.orientation.y = 0.0
+        msg.pose.orientation.z = 0.0
         msg.pose.orientation.w = 1.0
 
         self.cart_goal_pub.publish(msg)
-        self.get_logger().info(f'Published cartesian_goal: {coord}')
+        self.get_logger().info(f'Published cartesian_goal: ({x:.3f}, {y:.3f}, {z:.3f})')
+        # msg.pose.position.x = coord[0]
+        # msg.pose.position.y = coord[1]
+        # msg.pose.position.z = coord[2]
+        # # keep orientation fixed (you could parameterise this)
+        # msg.pose.orientation.x = 0.0
+        # msg.pose.orientation.y = 0.0
+        # msg.pose.orientation.z = 0.0
+        # msg.pose.orientation.w = 1.0
+
+        # self.cart_goal_pub.publish(msg)
+        # self.get_logger().info(f'Published cartesian_goal: {coord}')
 
     def request_cb(self, msg: String):
         """
@@ -126,6 +212,9 @@ class MemoryDecisionNode(Node):
         """
         Determine next slot to check based on test_step logic. Publish and move.
         """
+        if not self.esky_found:
+            self.get_logger().warn("Waiting for esky detection—no slot checks yet.")
+            return
         # Test 3+: prioritise known location if still valid
         if self.test_step >= 3 and self.current_target in self.drink_locations:
             known = self.drink_locations[self.current_target]
@@ -177,6 +266,220 @@ class MemoryDecisionNode(Node):
         self.next_slot_pub.publish(msg)
         self.move_to(coord)
 
+def main(args=None):
+    rclpy.init(args=args)
+    node = MemoryDecisionNode()
+    try:
+        rclpy.spin(node)
+    except KeyboardInterrupt:
+        pass
+    node.destroy_node()
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
+
+##########################################################################################################################################
+# This needs to be tested on real robot
+#!/usr/bin/env python3
+# """
+# ROS2 node for drink memory and search strategy.
+# Supports test steps 1-5:
+#  1: Avoid empty slots.
+#  2: Avoid wrong slots.
+#  3: Seek previously found locations (also includes 1 & 2).
+#  4: Efficiently update moved drinks (not implemented here yet).
+#  5: Detect empty esky and request restock.
+# """
+# import rclpy
+# from rclpy.node import Node
+# from std_msgs.msg import String, Int32
+# from geometry_msgs.msg import PoseStamped
+ 
+
+# class MemoryDecisionNode(Node):
+#     def __init__(self):
+#         super().__init__('drink_memory')
+#         # Declare ROS parameters
+#         self.declare_parameter('total_slots', 9)  # default 3x3 grid
+#         self.declare_parameter('test_step', 1)    # test step 1..5
+#         self.total_slots = self.get_parameter('total_slots').value
+#         self.test_step = self.get_parameter('test_step').value
+
+#         # Placeholder coordinates for each slot (3x3 grid)
+#         # Format: slot_number: (x, y, z) in robot frame
+#         self.slot_coords = {
+#             1: (0.1, 0.1, 0.0), 2: (0.2, 0.1, 0.0), 3: (0.3, 0.1, 0.0),
+#             4: (0.1, 0.2, 0.0), 5: (0.2, 0.2, 0.0), 6: (0.3, 0.2, 0.0),
+#             7: (0.1, 0.3, 0.0), 8: (0.2, 0.3, 0.0), 9: (0.3, 0.3, 0.0),
+   
+#         }
+#         # Placeholder drop-off coordinate
+#         self.dropoff_coord = (0.5, 0.0, 0.2)
+
+#         # Internal memory structures
+#         self.empty_slots = set()      # slots known empty or retrieved
+#         self.checked_wrong = set()    # slots checked but contained wrong drinks
+#         self.drink_locations = {}     # mapping drink_name -> slot
+#         self.current_target = None    # drink currently being searched
+#         self.checked_this_request = set()  # slots checked for the current request
+
+#         # Publishers for slot decisions and restock requests
+#         self.next_slot_pub = self.create_publisher(Int32, 'next_slot', 10)
+#         self.restock_pub   = self.create_publisher(String, 'restock_request', 10)
+#         self.cart_goal_pub = self.create_publisher(PoseStamped, '/cartesian_goal', 10)
+
+#         # Subscribers for requests and scan results
+#         self.create_subscription(String, 'requested_drink', self.request_cb, 10)
+#         self.create_subscription(Int32,  'scanned_slot',     self.slot_cb,   10)
+#         self.create_subscription(String, 'scanned_drink',    self.scan_cb,   10)
+
+#         self.get_logger().info(f'MemoryDecisionNode started (step={self.test_step}, slots={self.total_slots})')
+
+#     def move_to(self, coord):########
+#         """
+#         Pseudo-interface for UR3 movement to a Cartesian goal.
+#         In real integration, replace this with action client calls.
+#         """
+#         # self.get_logger().info(f'[UR3] Pseudo-moving to {coord}')
+#         msg = PoseStamped()
+#         msg.header.stamp = self.get_clock().now().to_msg()
+#         msg.header.frame_id = 'base_link'    # match your MoveIt frame
+#         msg.pose.position.x = coord[0]
+#         msg.pose.position.y = coord[1]
+#         msg.pose.position.z = coord[2]
+#         # keep orientation fixed (you could parameterise this)
+#         msg.pose.orientation.x = 0.0
+#         msg.pose.orientation.y = 0.0
+#         msg.pose.orientation.z = 0.0
+#         msg.pose.orientation.w = 1.0
+
+#         self.cart_goal_pub.publish(msg)
+#         self.get_logger().info(f'Published cartesian_goal: {coord}')
+
+#     def request_cb(self, msg: String):
+#         """
+#         Handle new drink request: reset per-request memory and start search.
+#         """
+#         self.current_target = msg.data.strip().lower()
+#         self.checked_this_request.clear()
+#         self.get_logger().info(f'Received request for "{self.current_target}"')
+#         self.decide_next_slot()
+
+#     def slot_cb(self, msg: Int32):
+#         """
+#         Record the slot number being scanned for context.
+#         """
+#         self._last_scanned_slot = msg.data
+
+#     def scan_cb(self, msg: String):
+#         """
+#         Process scan result: update memory, move UR3, and conclude.
+#         """
+#         if not hasattr(self, '_last_scanned_slot'):
+#             self.get_logger().warn('Scan result without slot context')
+#             return
+
+#         slot = self._last_scanned_slot
+#         result = msg.data.strip().lower()
+
+#         if result == 'unknown':
+#             # Mark slot empty and clear any stale mapping
+#             self.empty_slots.add(slot)
+#             for drink, loc in list(self.drink_locations.items()):
+#                 if loc == slot:
+#                     del self.drink_locations[drink]
+#             self.get_logger().info(f'Slot {slot} marked empty')
+#             self.decide_next_slot()
+
+#         elif result != self.current_target:
+#             # Wrong drink: record and store its location
+#             self.checked_wrong.add(slot)
+#             self.checked_this_request.add(slot)
+#             self.drink_locations[result] = slot
+#             self.get_logger().info(f'Slot {slot} contains "{result}", not "{self.current_target}"')
+#             self.decide_next_slot()
+
+#         else:
+#             # Correct drink found: move to slot and drop-off
+#             coord = self.slot_coords.get(slot, (0,0,0))
+#             self.move_to(coord)              # move to pickup
+#             self.move_to(self.dropoff_coord) # move to drop-off
+#             self.empty_slots.add(slot)       # now empty
+#             self.get_logger().info(f'Found and removed "{self.current_target}" from slot {slot}')
+#             # Wait for next request (no further search)
+
+#     def decide_next_slot(self):
+#         """
+#         Determine next slot to check based on test_step logic. Publish and move.
+#         """
+#         # Test 3+: prioritise known location if still valid
+#         if self.test_step >= 3 and self.current_target in self.drink_locations:
+#             known = self.drink_locations[self.current_target]
+#             if known not in self.empty_slots:
+#                 self.get_logger().info(f'[*] Prioritising known slot {known} for "{self.current_target}"')
+#                 self.publish_slot(known)
+#                 return
+#             else:
+#                 del self.drink_locations[self.current_target]
+
+#         # Build candidate list
+#         candidates = list(range(1, self.total_slots + 1))
+
+#         # Test 1+: avoid emptied slots
+#         if self.test_step >= 1:
+#             empties = [s for s in candidates if s in self.empty_slots]
+#             if empties:
+#                 self.get_logger().info(f'Ignoring emptied slots: {empties}')
+#             candidates = [s for s in candidates if s not in self.empty_slots]
+
+#         # Test 2+: avoid known wrong slots
+#         if self.test_step >= 2:
+#             wrongs = [s for s in candidates if s in self.checked_wrong]
+#             if wrongs:
+#                 self.get_logger().info(f'Ignoring known wrong slots: {wrongs}')
+#             candidates = [s for s in candidates if s not in self.checked_wrong]
+
+#         # Handle no candidates
+#         if not candidates:
+#             if self.test_step >= 5:
+#                 req = String()
+#                 req.data = f'Restock needed for "{self.current_target}"'
+#                 self.restock_pub.publish(req)
+#                 self.get_logger().warn('No slots left -> requesting restock')
+#             else:
+#                 self.get_logger().warn('No remaining candidates; halting search')
+#             return
+
+#         # Pick first candidate
+#         self.publish_slot(candidates[0])
+
+#     def publish_slot(self, slot: int):
+#         """
+#         Publish next slot to check, and pseudo-move UR3 there.
+#         """
+#         coord = self.slot_coords.get(slot, (0,0,0))
+#         self.get_logger().info(f'-> Next slot to check: {slot} (coord={coord})')
+#         msg = Int32(data=slot)
+#         self.next_slot_pub.publish(msg)
+#         self.move_to(coord)
+
+# def main(args=None):
+#     rclpy.init(args=args)
+#     node = MemoryDecisionNode()
+#     try:
+#         rclpy.spin(node)
+#     except KeyboardInterrupt:
+#         pass
+#     node.destroy_node()
+#     rclpy.shutdown()
+
+# if __name__ == '__main__':
+#     main()
+
+
+
+##################################################################################################################################
 
 #########fundamental logic works
 # class MemoryDecisionNode(Node):
@@ -383,18 +686,18 @@ class MemoryDecisionNode(Node):
 #         # # pseudo-move:
 #         # self.get_logger().info(f'[UR3] Pseudo-moving to slot {slot}...')
 
-def main(args=None):
-    rclpy.init(args=args)
-    node = MemoryDecisionNode()
-    try:
-        rclpy.spin(node)
-    except KeyboardInterrupt:
-        pass
-    node.destroy_node()
-    rclpy.shutdown()
+# def main(args=None):
+#     rclpy.init(args=args)
+#     node = MemoryDecisionNode()
+#     try:
+#         rclpy.spin(node)
+#     except KeyboardInterrupt:
+#         pass
+#     node.destroy_node()
+#     rclpy.shutdown()
 
-if __name__ == '__main__':
-    main()
+# if __name__ == '__main__':
+#     main()
 
 
 
