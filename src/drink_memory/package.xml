@@ -13,6 +13,7 @@
   <!-- <depend>trajectory_msgs</depend>      for JointTrajectory -->
   <depend>builtin_interfaces</depend>   <!-- for Duration -->
   <depend>std_srvs</depend>
+  <depend>tf2_ros</depend>
 
   <!-- (Optional) test dependencies -->
   <test_depend>ament_lint_auto</test_depend>
